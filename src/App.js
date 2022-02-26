@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "antd/dist/antd.css";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import { useState } from "react";
+import { Layout, Menu } from "antd";
+import { menuItems } from "./components/DashboardData";
+import MenuItems from "./components/MenuItems";
+import Navbar from "./components/Navbar";
+
+const { Header, Content, Sider } = Layout;
+const { SubMenu } = Menu;
 
 function App() {
+  const [collapsed, setCollapsed] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/dashboard/*" element={<Dashboard />} />
+      </Routes>
+    </>
   );
 }
 
