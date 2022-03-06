@@ -54,7 +54,7 @@ const Dashboard = () => {
           <Header>
             <Navbar />
           </Header>
-          <Content style={{ margin: "16px" }}>
+          <Content style={{ margin: "30px 20px" }}>
             <Routes>
               {menuItems.map((menu, index) => (
                 <>

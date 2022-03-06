@@ -1,0 +1,25 @@
+{
+    "products": [
+        {
+            "name": "Pizza",
+            "price": 100,
+            "vat": 10,
+            "category": "fast-food",
+            "details": "i love pizza"
+        },
+        {
+            "name": "French Fry",
+            "price": 110,
+            "vat": 10,
+            "category": "fast-food",
+            "details": "i love French fry"
+        },
+        {
+            "name": "Sandwich",
+            "price": 100,
+            "vat": 10,
+            "category": "fast-food",
+            "details": "i love sandwich"
+        }
+    ]
+}
