@@ -3,11 +3,11 @@ import { Layout, Menu } from "antd";
 import {
   SettingOutlined,
 } from "@ant-design/icons";
-import { Link, NavLink, Router } from "react-router-dom";
+import { NavLink  } from "react-router-dom";
 const { SubMenu } = Menu;
 
 const MenuItems = (props) => {
-  const { name, subMenus, to, exact, icon } = props;
+  const { name, subMenus, to, icon } = props;
   return (
     <>
       <Menu theme="dark" mode="inline">

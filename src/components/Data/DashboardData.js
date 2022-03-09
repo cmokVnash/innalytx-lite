@@ -1,17 +1,15 @@
 import {
-  DesktopOutlined,
   HomeOutlined,
   SettingOutlined,
   ShoppingCartOutlined,
-  UsergroupAddOutlined,
   FileOutlined,
   FundViewOutlined,
   PlusCircleOutlined
 } from "@ant-design/icons";
-import AddCustomer from "./AddCustomer";
-import AddEmployee from "./AddEmployee";
-import AddProduct from "./AddProduct/AddProduct";
-import AllProducts from "./AllProducts/AllProducts";
+import AddCustomer from "../AddCustomer";
+import AddEmployee from "../AddEmployee/AddEmployee";
+import AddProduct from "../AddProduct/AddProduct";
+import AllProducts from "../AllProducts/AllProducts";
 
 
 export const menuItems = [
@@ -29,7 +27,7 @@ export const menuItems = [
     comp: <AddCustomer />,
     subMenus: [
       { name: "Add Customer", to: "setting/customer", comp: <AddCustomer /> },
-      { name: "Add Employee", to: "setting/employee" , comp: <AddCustomer />},
+      { name: "Add Employee", to: "setting/employee" , comp: <AddEmployee />},
     ],
   },
   { name: "Sales", to: `design`, icon: <ShoppingCartOutlined /> },

@@ -3,8 +3,8 @@ import { Layout, Menu } from "antd";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { menuItems } from "../components/DashboardData";
 import MenuItems from "../components/MenuItems";
+import { menuItems } from "../components/Data/DashboardData";
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;

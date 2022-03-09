@@ -1,8 +1,7 @@
 import React from "react";
-import { Upload, message } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
-import { Form, Button, Checkbox, DatePicker, Input, Select, Space } from "antd";
-import FormElement from "./Form/FormElement";
+import { Form, Button } from "antd";
+import FormElement from "./FormElement";
+
 
 const AddEmployee = () => {
   const onFinish = (values) => {
@@ -15,12 +14,17 @@ const AddEmployee = () => {
   const components = [
     {
       component: "input",
-      label: "First Name",
+      label: "Full Name",
       required: true,
     },
     {
       component: "input",
-      label: "Last Name",
+      label: "Address",
+      required: true,
+    },
+    {
+      component: "input",
+      label: "National Id",
       required: true,
     },
     {
@@ -29,22 +33,27 @@ const AddEmployee = () => {
       required: true,
     },
     {
-      component: "password",
-      label: "Password",
+      component: "input",
+      label: "Phone",
+      required: true,
+    },
+    {
+      component: "input",
+      label: "Photo",
+      required: true,
+    },
+    {
+      component: "input",
+      label: "Position",
       required: true,
     },
    
   ];
-  
+
   return (
     
     <>
-      <Form onFinish={(values) => {
-        console.log({ values });
-      }}
-      onFinishFailed={(error) => {
-        console.log({ error });
-      }}>
+      <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
         {components.map((component) => (
           <FormElement {...component} />
         ))}
