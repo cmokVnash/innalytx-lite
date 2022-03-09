@@ -4,7 +4,7 @@ import {
   EditOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Card, Col, Row, Table } from "antd";
+import { Button, Card, Col, Row, Table } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { columns } from "../Data/ProductColumns";

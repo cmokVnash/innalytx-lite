@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login/Login";
 import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader/Preloader";
+import Order from "./pages/Order/Order";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/order/*" element={<Order />} />
         </Routes>
       }
      
