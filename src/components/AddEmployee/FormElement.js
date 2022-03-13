@@ -6,7 +6,7 @@ const componentMapping = {
   checkbox: Checkbox,
 };
 
-function FormElement({ component, label, required, name, rules }) {
+const FormElement = ({ component, label, required, name, rules })=> {
   const Component = componentMapping[component];
   return (
     <>
@@ -15,7 +15,7 @@ function FormElement({ component, label, required, name, rules }) {
         wrapperCol={{ span: 10 }}
         label={label}
         name={name}
-        rules={[{ required, message: "Field is required!" }]}
+        // rules={[{ required, message: "Field is required!" }]}
       >
         <Component />
       </Form.Item>
