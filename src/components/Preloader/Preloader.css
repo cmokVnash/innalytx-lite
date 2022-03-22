@@ -12,7 +12,7 @@
     position: relative;
     /* background: #fff; */
     border-radius: 50%;
-    border-top: 10px solid #ff6b6b;
+    border-top: 10px solid #76CEEB;
     animation: animate 2s linear infinite;
 }
 @keyframes animate {
@@ -22,11 +22,11 @@
 }
 #loading::after{
     transform: rotate(120deg);
-    border-top: 10px solid #feca57;
+    border-top: 10px solid #3D405B;
 }
 #loading::before{
     transform: rotate(240deg);
-    border-top: 10px solid #48dbfb;
+    border-top: 10px solid #40A9FF;
 }
 #loading::after,
 #loading::before{
