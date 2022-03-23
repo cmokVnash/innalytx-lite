@@ -5,7 +5,7 @@ const Preloader = () => {
   return (
     <div id="container">
       <div id="loading">
-        <span style={{ fontSize: "25px", fontWeight: 'bold' }} id="loading-img">
+        <span style={{ fontSize: "30px", fontWeight: 'bold' }} id="loading-img">
           Innalytx
         </span>
       </div>
