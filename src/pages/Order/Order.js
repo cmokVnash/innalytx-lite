@@ -1,12 +1,14 @@
-import { CloseOutlined } from '@ant-design/icons';
-import { Card, Col, Input, Layout, Row } from 'antd';
-import Meta from 'antd/lib/card/Meta';
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { orderItems } from '../../components/Data/OrderData';
-import OrderItems from '../../components/OrderDetails/OrderItems';
-import { useProduct } from '../../Context/ProductContext';
-import './Order.css';
+import React from "react";
+import { Card, Col, Layout, Menu, Row } from "antd";
+import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import { orderItems } from "../../components/Data/OrderData";
+import "./Order.css";
+import OrderItems from "../../components/OrderDetails/OrderItems";
+import { Input } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
+import { useProduct } from "../../Context/ProductContext";
+import Meta from "antd/lib/card/Meta";
 
 
 
@@ -231,6 +233,7 @@ const Order = () => {
                                         <h4 className="order-price">$40</h4>
                                     </div>
 
+<<<<<<< HEAD
                                     <div className="order-card">
                                         <img
                                             className="order-image"
@@ -292,5 +295,65 @@ const Order = () => {
         </>
     )
 }
+=======
+                  <div className="order-card">
+                    <img
+                      className="order-image"
+                      src="https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?size=626&ext=jpg"
+                      alt=""
+                    />
+                    <div className="order-detail">
+                      <p>Lorem ipsum dolor sit</p>
+                      <CloseOutlined style={{ fontSize: "14px" }} />
+                      <span>1</span> <input type="text" value="M" />
+                    </div>
+                    <h4 className="order-price">$40</h4>
+                  </div>
+                </div>
+                <hr className="devider" />
+                <div className="order-total">
+                  <p>
+                    Subtotal <span>$156</span>
+                  </p>
+                  <p>
+                    Tax (10%) <span>$15.6</span>
+                  </p>
+                  <p>
+                    Delivery Fee <span>$3</span>
+                  </p>
+                  <div className="order-promo">
+                    <input
+                      type="text"
+                      className="input-promo"
+                      placeholder="Apply voucher"
+                    />
+                    <button className="button-promo">Apply Promo</button>
+                  </div>
+                  <hr className="devider" />
+                  <p style={{ margin: "20px 0" }}>
+                    Total <span>$174.6 </span>
+                  </p>
+                </div>
+                <input
+                  className="cancel-order"
+                  type="button"
+                  value="Cancel Order"
+                />{" "}
+                <Link to="/order/conformOrder">
+                  <input
+                    className="place-order"
+                    type="button"
+                    value="Place Order"
+                  />
+                </Link>
+              </div>
+            </div>
+          </Content>
+        </Layout>
+      </Layout>
+    </>
+  );
+};
+>>>>>>> 0a98742ec6e9d55a6ef07bb1e58b813c7e1c9b2a
 
 export default Order

@@ -1,14 +1,14 @@
-import 'antd/dist/antd.min.css'
-import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Preloader from './components/Preloader/Preloader'
-import ProductContextProvider from './Context/ProductContext'
+import 'antd/dist/antd.css'
+import { Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
-import Home from './pages/Homepage/Home'
 import Login from './pages/Login/Login'
+import { useEffect, useState } from 'react'
+import Preloader from './components/Preloader/Preloader'
 import Order from './pages/Order/Order'
-import LoginForm from './pages/Login/LoginForm'
+import OrderDetails from './pages/Order/OrderDetails'
+import Home from './pages/Homepage/Home'
+import ProductContextProvider from './Context/ProductContext'
 
 function App() {
     const [loading, setLoading] = useState(true)
@@ -29,8 +29,12 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/dashboard/*" element={<Dashboard />} />
-                        <Route path="/login" element={<LoginForm />} />
+                        <Route path="/login" element={<Login />} />
                         <Route path="/order/*" element={<Order />} />
+                        <Route
+                            path="/order/conformOrder"
+                            element={<OrderDetails />}
+                        />
                     </Routes>
                 </ProductContextProvider>
             )}
