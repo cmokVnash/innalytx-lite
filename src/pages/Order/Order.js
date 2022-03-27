@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Col, Layout, Menu, Row } from "antd";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { orderItems } from "../../components/Data/OrderData";
 import "./Order.css";
 import OrderItems from "../../components/OrderDetails/OrderItems";
@@ -253,11 +253,13 @@ const Order = () => {
                   type="button"
                   value="Cancel Order"
                 />{" "}
-                <input
-                  className="place-order"
-                  type="button"
-                  value="Place Order"
-                />
+                <Link to="/order/conformOrder">
+                  <input
+                    className="place-order"
+                    type="button"
+                    value="Place Order"
+                  />
+                </Link>
               </div>
             </div>
           </Content>
