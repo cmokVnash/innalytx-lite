@@ -1,5 +1,5 @@
-import { Menu, Button } from "antd";
-import React from "react";
+import { Button, Menu } from 'antd';
+import React from 'react';
 
 const Navbar = () => {
   return (
