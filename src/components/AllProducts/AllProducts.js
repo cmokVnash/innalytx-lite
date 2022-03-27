@@ -7,6 +7,7 @@ import {
 import { Button, Card, Col, Row, Table } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useProduct } from "../../Context/ProductContext";
 import { columns } from "../Data/ProductColumns";
 import ProductModal from "./ProductModal";
 const { Meta } = Card;
@@ -16,7 +17,7 @@ const api = "http://localhost:3006/products";
 const AllProducts = () => {
 
   const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
+  const {products, setProducts} = useProduct();
   const [productView, setProductView] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalProduct, setModalProduct] = useState([]);
