@@ -1,5 +1,5 @@
 import './App.css'
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.min.css'
 import { Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login/Login'
@@ -9,6 +9,7 @@ import Order from './pages/Order/Order'
 import OrderDetails from './pages/Order/OrderDetails'
 import Home from './pages/Homepage/Home'
 import ProductContextProvider from './Context/ProductContext'
+import LoginForm from './pages/Login/LoginForm'
 
 function App() {
     const [loading, setLoading] = useState(true)
@@ -29,7 +30,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/dashboard/*" element={<Dashboard />} />
-                        <Route path="/login" element={<Login />} />
+                        <Route path="/login" element={<LoginForm />} />
                         <Route path="/order/*" element={<Order />} />
                         <Route
                             path="/order/conformOrder"
