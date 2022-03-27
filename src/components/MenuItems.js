@@ -1,9 +1,8 @@
-import React from "react";
-import { Layout, Menu } from "antd";
-import {
-  SettingOutlined,
-} from "@ant-design/icons";
-import { NavLink  } from "react-router-dom";
+import { SettingOutlined } from '@ant-design/icons';
+import { Menu } from 'antd';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 const { SubMenu } = Menu;
 
 const MenuItems = (props) => {
