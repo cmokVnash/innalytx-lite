@@ -11,7 +11,7 @@ const Home = () => {
                 <Nav />
                 <div className="showcase-area">
                     <div className="container">
-                        <div style={{}} className="left">
+                        <div className="left">
                             <div className="big-title">
                                 <h1 style={{ color: '#d8f3dc' }}>INNALYTX</h1>
                                 <h1 style={{ color: 'lightGray' }}>

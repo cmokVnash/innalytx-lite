@@ -1,24 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { MenuOutlined } from '@ant-design/icons'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Nav.css'
 
 const Nav = () => {
-  return (
-    <>
-      <div className="nav">
-        <div className="logo">
-          <h3 style={{ color: "#f1faee" }}>Innalytx</h3>
-        </div>
-        <div className="menu">
-          <Link to="/">Home</Link>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/order">Order</Link>
-          <Link className="btn" to="/login">
-            LOGIN
-          </Link>
-        </div>
-      </div>
-    </>
-  );
-};
+    return (
+        <>
+            <nav>
+                <div class="logo">Innalytx</div>
+                <input type="checkbox" id="click" />
+                <label for="click" class="menu-btn">
+                    <i>
+                        <MenuOutlined />
+                    </i>
+                </label>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                    <li>
+                        <Link to="/order">Order</Link>
+                    </li>
 
-export default Nav;
+                    <li className="">
+                        <Link className="btn" to="/login">
+                            LOGIN
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+        </>
+    )
+}
+
+export default Nav
