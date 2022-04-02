@@ -9,6 +9,27 @@ import { Input } from 'antd'
 import { CloseOutlined } from '@ant-design/icons'
 import { useProduct } from '../../Context/ProductContext'
 import Meta from 'antd/lib/card/Meta'
+import styled from 'styled-components'
+import {
+    Bills,
+    CartContainer,
+    CartHeading,
+    CategoryBtn,
+    CategoryContainer,
+    Devider,
+    Div,
+    InputPromo,
+    OrderCard,
+    OrderContainer,
+    OrderDetails,
+    OrderImg,
+    OrderPromo,
+    OrderTotal,
+    OrderWrapper,
+    ProductContainer,
+    ProductHeading,
+    PromoBtn,
+} from './OrderStyle'
 
 const { Search } = Input
 const { Content, Sider } = Layout
@@ -79,24 +100,13 @@ const Order = () => {
                             ))}
                         </Routes>
 
-                        <div
-                            style={{ overflow: 'hidden', overflowY: 'hidden' }}
-                            className="order-container"
-                        >
-                            <div className="product-container">
-                                <div className="product-heading">
-                                    <div className="left">
-                                        <h2
-                                            style={{
-                                                fontSize: '25px',
-                                                color: '#264653',
-                                                fontWeight: '700',
-                                            }}
-                                        >
-                                            Choose Category
-                                        </h2>
-                                    </div>
-                                    <div
+                        <OrderContainer>
+                            <ProductContainer>
+                                <ProductHeading>
+                                    <Div>
+                                        <h2>Choose Category</h2>
+                                    </Div>
+                                    <Div
                                         style={{ marginRight: '30px' }}
                                         className="right"
                                     >
@@ -109,21 +119,20 @@ const Order = () => {
                                             onSearch={onSearch}
                                             enterButton
                                         />
-                                    </div>
-                                </div>
-                                <div className="cat-container">
+                                    </Div>
+                                </ProductHeading>
+                                <CategoryContainer>
                                     {catItems.map((currentElm) => (
-                                        <button
-                                            style={{ marginRight: '20px' }}
+                                        <CategoryBtn
                                             onClick={() =>
                                                 filterItem(currentElm)
                                             }
                                             className="btn-category"
                                         >
                                             {currentElm}
-                                        </button>
+                                        </CategoryBtn>
                                     ))}
-                                </div>
+                                </CategoryContainer>
                                 <Row gutter={[2, 20]}>
                                     {items.map((item) => (
                                         <Col span={8}>
@@ -172,84 +181,80 @@ const Order = () => {
                                         </Col>
                                     ))}
                                 </Row>
-                            </div>
+                            </ProductContainer>
 
-                            <div className="dashboard-order">
-                                <div className="order-title">
-                                    <div>
-                                        <img
-                                            className="order-image"
+                            <CartContainer>
+                                <CartHeading>
+                                    <Div>
+                                        <OrderImg
                                             src="https://pmtips.net/Portals/0/EasyDNNnews/1895/img-attributes-of-a-successful-projectmManager.png"
                                             alt=""
                                         />
-                                    </div>
-                                    <div style={{ marginRight: '70px' }}>
+                                    </Div>
+                                    <Div style={{ marginRight: '70px' }}>
                                         <h3>Manager</h3>
                                         <p>221 B Baker Street, London</p>
-                                    </div>
-                                </div>
-                                <h3
+                                    </Div>
+                                </CartHeading>
+                                <Bills
                                     style={{
                                         width: '10%',
                                         borderBottom: '3px solid gray',
                                     }}
                                 >
                                     Bills
-                                </h3>
-                                <div className="order-wrapper">
-                                    <div className="order-card">
-                                        <img
-                                            className="order-image"
+                                </Bills>
+                                <OrderWrapper>
+                                    <OrderCard>
+                                        <OrderImg
                                             src="https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?size=626&ext=jpg"
                                             alt=""
                                         />
-                                        <div className="order-detail">
+                                        <OrderDetails>
                                             <p>Lorem ipsum dolor sit</p>
                                             <CloseOutlined
                                                 style={{ fontSize: '14px' }}
                                             />
                                             <span>1</span>{' '}
                                             <input type="text" value="M" />
-                                        </div>
+                                        </OrderDetails>
                                         <h4 className="order-price">$40</h4>
-                                    </div>
+                                    </OrderCard>
 
-                                    <div className="order-card">
-                                        <img
-                                            className="order-image"
+                                    <OrderCard>
+                                        <OrderImg
                                             src="https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?size=626&ext=jpg"
                                             alt=""
                                         />
-                                        <div className="order-detail">
+                                        <OrderDetails>
                                             <p>Lorem ipsum dolor sit</p>
                                             <CloseOutlined
                                                 style={{ fontSize: '14px' }}
                                             />{' '}
                                             <span>1</span>
                                             <input type="text" value="M" />
-                                        </div>
+                                        </OrderDetails>
                                         <h4 className="order-price">$40</h4>
-                                    </div>
+                                    </OrderCard>
 
-                                    <div className="order-card">
-                                        <img
-                                            className="order-image"
+                                    <OrderCard>
+                                        <OrderImg
                                             src="https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?size=626&ext=jpg"
                                             alt=""
                                         />
-                                        <div className="order-detail">
+                                        <OrderDetails>
                                             <p>Lorem ipsum dolor sit</p>
                                             <CloseOutlined
                                                 style={{ fontSize: '14px' }}
                                             />
                                             <span>1</span>{' '}
                                             <input type="text" value="M" />
-                                        </div>
+                                        </OrderDetails>
                                         <h4 className="order-price">$40</h4>
-                                    </div>
-                                </div>
-                                <hr className="devider" />
-                                <div className="order-total">
+                                    </OrderCard>
+                                </OrderWrapper>
+                                <Devider />
+                                <OrderTotal>
                                     <p>
                                         Subtotal <span>$156</span>
                                     </p>
@@ -259,21 +264,18 @@ const Order = () => {
                                     <p>
                                         Delivery Fee <span>$3</span>
                                     </p>
-                                    <div className="order-promo">
-                                        <input
+                                    <OrderPromo>
+                                        <InputPromo
                                             type="text"
-                                            className="input-promo"
                                             placeholder="Apply voucher"
                                         />
-                                        <button className="button-promo">
-                                            Apply Promo
-                                        </button>
-                                    </div>
-                                    <hr className="devider" />
+                                        <PromoBtn>Apply Promo</PromoBtn>
+                                    </OrderPromo>
+                                    <Devider />
                                     <p style={{ margin: '20px 0' }}>
                                         Total <span>$174.6 </span>
                                     </p>
-                                </div>
+                                </OrderTotal>
                                 <input
                                     className="cancel-order"
                                     type="button"
@@ -286,8 +288,8 @@ const Order = () => {
                                         value="Place Order"
                                     />
                                 </Link>
-                            </div>
-                        </div>
+                            </CartContainer>
+                        </OrderContainer>
                     </Content>
                 </Layout>
             </Layout>
