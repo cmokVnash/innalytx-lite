@@ -15,7 +15,7 @@ const AddSpaceTypeForm = () => {
     const { suffixSubdomainUrl, rootUrl, prefixSubdomainUrl } = urls
 
     const onFinish = async (formData) => {
-        const { restaurant_name } = formData
+        const { restaurant_name, ...rest } = formData
         const subDomainUrl = `${prefixSubdomainUrl}${restaurant_name}.${suffixSubdomainUrl}/login/`
         if (restaurant_name) {
             try {
@@ -26,7 +26,7 @@ const AddSpaceTypeForm = () => {
             }
         } else {
             try {
-                const response = await http.post(`${rootUrl}/login/`, formData)
+                const response = await http.post(`${rootUrl}/login/`, rest)
                 console.log(rootUrl)
                 console.log(response)
             } catch (error) {

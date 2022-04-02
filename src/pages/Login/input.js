@@ -1,4 +1,6 @@
+import { Select } from 'antd'
 import React from 'react'
+import { ProductContext } from '../../Context/ProductContext'
 
 const GenerateInput = () => {
     return [
