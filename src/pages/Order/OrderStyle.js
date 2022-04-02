@@ -6,10 +6,10 @@ const CartContainer = styled.div`
     top: 0;
     right: 0;
     height: 100vh;
-    background: #edf2fb;
+    background: #ffffff;
     padding: 0.5rem 1.5rem;
     z-index: 3;
-    border-left: 1px solid #90e0ef;
+    border-left: 1px solid #b1a7a6;
 `
 
 const CartHeading = styled.div`
