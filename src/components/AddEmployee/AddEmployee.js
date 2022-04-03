@@ -1,8 +1,11 @@
 import React from 'react'
-import { Form, Button } from 'antd'
+import { Form, Button, Select } from 'antd'
 import FormElement from './FormElement'
+import { useProduct } from '../../Context/ProductContext'
 
 const AddEmployee = () => {
+    const { products, setProducts } = useProduct()
+    console.log(products)
     const onFinish = (values) => {
         console.log('Success:', values)
     }
@@ -50,10 +53,19 @@ const AddEmployee = () => {
             required: true,
         },
         {
-            component: 'input',
+            component: 'select',
             name: 'position',
             label: 'Position',
             required: true,
+            render: () => {
+                products.map((option) => {
+                    return (
+                        <Select.Option value={option.name}>
+                            {option.name}
+                        </Select.Option>
+                    )
+                })
+            },
         },
     ]
 

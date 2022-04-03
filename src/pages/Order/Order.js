@@ -87,7 +87,9 @@ const Order = () => {
                     ))}
                 </Sider>
                 <Layout className="site-layout">
-                    <Content style={{ padding: '20px 30px' }}>
+                    <Content
+                        style={{ padding: '20px 30px', background: '##e9ecef' }}
+                    >
                         <Routes>
                             {orderItems.map((menu, index) => (
                                 <>
