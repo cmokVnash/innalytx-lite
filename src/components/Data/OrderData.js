@@ -1,18 +1,9 @@
-import {
-    HomeOutlined,
-    SettingOutlined,
-    CoffeeOutlined,
-    FileOutlined,
-    FundViewOutlined,
-    PlusCircleOutlined
-  } from "@ant-design/icons";
-  import AddCustomer from "../AddCustomer";
-  import AddEmployee from "../AddEmployee/AddEmployee";
-  import AddProduct from "../AddProduct/AddProduct";
-  import AllProducts from "../AllProducts/AllProducts";
-import AllMenus from "../OrderDetails/AllMenus";
-import OrderHome from "../OrderDetails/OrderHome";
-import Setting from "../OrderDetails/Setting";
+import { CoffeeOutlined, FileOutlined, FundViewOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
+
+import AllMenus from '../OrderDetails/AllMenus';
+import OrderHome from '../OrderDetails/OrderHome';
+import Setting from '../OrderDetails/Setting';
+
   
   
   export const orderItems = [

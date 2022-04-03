@@ -17,6 +17,7 @@ const AddSpaceTypeForm = () => {
     const onFinish = async (formData) => {
         const { restaurant_name, ...rest } = formData
         const subDomainUrl = `${prefixSubdomainUrl}${restaurant_name}.${suffixSubdomainUrl}/login/`
+        
         if (restaurant_name) {
             try {
                 const response = await http.post(subDomainUrl, formData)
