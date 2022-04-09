@@ -5,6 +5,7 @@ import { urls } from '../../https/config'
 const initState = {
     token: null,
     loading: false,
+    isFetched: true,
 }
 export const loginReq = createAsyncThunk(
     'auth/loginReq',
@@ -56,6 +57,7 @@ const AuthSlice = createSlice({
             console.log(action.payload)
             state.token = action.payload?.access_token
             state.loading = false
+            state.isFetched = true
         })
         builder.addCase(loginReq.pending, (state, action) => {
             console.log(action.payload)

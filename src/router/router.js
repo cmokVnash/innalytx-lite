@@ -19,9 +19,8 @@ import Dashboard from '../pages/Dashboard.js'
 // const NotFound = lazy(() => import('pages/NotFoundPage'))
 
 function PrivateRoute({ children }) {
-    const isLoggedIn = false
-    // useSelector((state) => state.Auth.token)
-    return isLoggedIn ? children : <Navigate to={publicRoute.landing} />
+    const isLoggedIn = useSelector((state) => state.Auth.token)
+    return isLoggedIn ? children : <Navigate to={publicRoute.login} />
 }
 
 PrivateRoute.propTypes = {

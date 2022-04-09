@@ -1,3 +1,4 @@
+import React from 'react'
 import { Input, Form, Checkbox, Select } from 'antd'
 
 const componentMapping = {
