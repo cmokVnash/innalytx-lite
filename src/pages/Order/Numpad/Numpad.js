@@ -4,7 +4,7 @@ import './Numpad.css'
 
 const Numpad = () => {
     const [result, setResult] = useState('')
-    const [add, setAdd] = useState(0)
+    const [add, setAdd] = useState('')
 
     const handleClick = (e) => {
         setResult(result.concat(e.target.value))
@@ -13,7 +13,11 @@ const Numpad = () => {
     const handleAdd = (e) => {
         setAdd(e.target.value)
         const total = parseInt(result) + parseInt(add)
-        setResult(total)
+        if (result == '') {
+            setResult(result.concat(add) + result.concat(result))
+        } else {
+            setResult(total)
+        }
     }
 
     const clear = () => {
