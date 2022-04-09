@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import GenerateInput from './input'
 import http from '../../https'
 import { urls } from '../../https/config'
+import { useDispatch } from 'react-redux'
+import { loginReq } from '../../store/slice/authSlice'
 // import './Login.css'
 
 const AddSpaceTypeForm = () => {
@@ -13,27 +15,12 @@ const AddSpaceTypeForm = () => {
     const { Item: FormItem, useForm } = Form
     const [form] = useForm()
     const { suffixSubdomainUrl, rootUrl, prefixSubdomainUrl } = urls
+    const dispatch = useDispatch()
 
     const onFinish = async (formData) => {
-        const { restaurant_name, ...rest } = formData
-        const subDomainUrl = `${prefixSubdomainUrl}${restaurant_name}.${suffixSubdomainUrl}/login/`
+        const response = dispatch(loginReq(formData))
         
-        if (restaurant_name) {
-            try {
-                const response = await http.post(subDomainUrl, formData)
-                console.log(response)
-            } catch (error) {
-                console.log(error)
-            }
-        } else {
-            try {
-                const response = await http.post(`${rootUrl}/login/`, rest)
-                console.log(rootUrl)
-                console.log(response)
-            } catch (error) {
-                console.log(error?.response)
-            }
-        }
+        
     }
 
     return (
