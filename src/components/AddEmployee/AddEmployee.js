@@ -58,9 +58,12 @@ const AddEmployee = () => {
             label: 'Position',
             required: true,
             render: () => {
-                products.map((option) => {
+                products.map((option, key) => {
                     return (
-                        <Select.Option value={option.name}>
+                        <Select.Option
+                            key={`${option.name}-${key}`}
+                            value={option.name}
+                        >
                             {option.name}
                         </Select.Option>
                     )
@@ -76,8 +79,8 @@ const AddEmployee = () => {
                 onFinishFailed={onFinishFailed}
                 form={form}
             >
-                {components.map((component) => (
-                    <FormElement {...component} />
+                {components.map((component, key) => (
+                    <FormElement key={key} {...component} />
                 ))}
                 <Form.Item wrapperCol={{ offset: 4, span: 10 }} hasFeedback>
                     <Button block type="primary" htmlType="submit">

@@ -7,9 +7,9 @@ const Nav = () => {
     return (
         <>
             <nav>
-                <div class="logo">Innalytx</div>
+                <div className="logo">Innalytx</div>
                 <input type="checkbox" id="click" />
-                <label for="click" class="menu-btn">
+                <label htmlFor="click" className="menu-btn">
                     <i>
                         <MenuOutlined />
                     </i>

@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Form, notification } from 'antd'
 import FormElement from '../../components/Form/GlobalFormComponent'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import GenerateInput from './input'
 import http from '../../https'
 import { urls } from '../../https/config'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginReq } from '../../store/slice/authSlice'
+import { privateRoute } from '../../router/routes'
 // import './Login.css'
 
 const AddSpaceTypeForm = () => {
@@ -13,26 +16,23 @@ const AddSpaceTypeForm = () => {
     const { Item: FormItem, useForm } = Form
     const [form] = useForm()
     const { suffixSubdomainUrl, rootUrl, prefixSubdomainUrl } = urls
+    const dispatch = useDispatch()
+    const { loading, token: isLoggedIn } = useSelector((state) => state.Auth)
+    const [redirectToReferrer, setRedirectToReferrer] = useState(false)
 
-    const onFinish = async (formData) => {
-        const { restaurant_name } = formData
-        const subDomainUrl = `${prefixSubdomainUrl}${restaurant_name}.${suffixSubdomainUrl}/login/`
-        if (restaurant_name) {
-            try {
-                const response = await http.post(subDomainUrl, formData)
-                console.log(response)
-            } catch (error) {
-                console.log(error)
-            }
-        } else {
-            try {
-                const response = await http.post(`${rootUrl}/login/`, formData)
-                console.log(rootUrl)
-                console.log(response)
-            } catch (error) {
-                console.log(error?.response)
-            }
+    useEffect(() => {
+        if (isLoggedIn) {
+            setRedirectToReferrer(true)
         }
+    }, [isLoggedIn])
+
+    const { from } = location.state || { from: { pathname: '/dashboard' } }
+    if (redirectToReferrer) {
+        return <Navigate to={from.pathname} />
+    }
+    const onFinish = async (formData) => {
+        const response = dispatch(loginReq(formData))
+        return navigate('/dashboard')
     }
 
     return (
@@ -57,7 +57,11 @@ const AddSpaceTypeForm = () => {
                             <FormElement key={index} {...Element} />
                         ))}
                         <FormItem>
-                            <Button type="primary" htmlType="submit">
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                                loading={loading}
+                            >
                                 Submit
                             </Button>
                         </FormItem>

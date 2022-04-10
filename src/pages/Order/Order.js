@@ -1,11 +1,11 @@
-import React from 'react'
-import { Card, Col, Layout, Menu, Row } from 'antd'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { Card, Col, Layout, Menu, Row, Input } from 'antd'
+
 import { Link, Route, Routes } from 'react-router-dom'
 import { orderItems } from '../../components/Data/OrderData'
 import './Order.css'
 import OrderItems from '../../components/OrderDetails/OrderItems'
-import { Input } from 'antd'
+
 import { CloseOutlined } from '@ant-design/icons'
 import { useProduct } from '../../Context/ProductContext'
 import Meta from 'antd/lib/card/Meta'
@@ -124,8 +124,9 @@ const Order = () => {
                                     </Div>
                                 </ProductHeading>
                                 <CategoryContainer>
-                                    {catItems.map((currentElm) => (
+                                    {catItems.map((currentElm, index) => (
                                         <CategoryBtn
+                                            key={index}
                                             onClick={() =>
                                                 filterItem(currentElm)
                                             }
@@ -136,8 +137,8 @@ const Order = () => {
                                     ))}
                                 </CategoryContainer>
                                 <Row gutter={[2, 20]}>
-                                    {items.map((item) => (
-                                        <Col span={8}>
+                                    {items.map((item, index) => (
+                                        <Col span={8} key={index}>
                                             <Card
                                                 style={{
                                                     width: 300,

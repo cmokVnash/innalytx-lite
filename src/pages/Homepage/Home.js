@@ -1,10 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Link, useLocation, Navigate } from 'react-router-dom'
 import './Home.css'
 import Nav from './Nav'
 import SignupForm from './SignupForm'
 
 const Home = () => {
+    const location = useLocation()
+
     return (
         <div className="contain">
             <header>

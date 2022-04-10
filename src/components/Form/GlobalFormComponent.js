@@ -1,3 +1,4 @@
+import React from 'react'
 import { Input, Form, Checkbox } from 'antd'
 import ComponentMapping from './ComponentMapper'
 
