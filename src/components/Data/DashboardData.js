@@ -11,6 +11,7 @@ import AddCustomer from '../AddCustomer'
 import AddEmployee from '../AddEmployee/AddEmployee'
 import AddProduct from '../AddProduct/AddProduct'
 import AllProducts from '../AllProducts/AllProducts'
+import CreateBranch from '../CreateBranch/CreateBranch'
 
 export const menuItems = [
     {
@@ -51,6 +52,13 @@ export const menuItems = [
         to: `new-product`,
         icon: <PlusCircleOutlined />,
         comp: <AddProduct />,
+    },
+    {
+        name: 'Create Branch',
+        exact: true,
+        to: `new-branch`,
+        icon: <PlusCircleOutlined />,
+        comp: <CreateBranch />,
     },
     {
         name: 'All Products',
