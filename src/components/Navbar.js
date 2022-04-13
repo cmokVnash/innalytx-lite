@@ -3,43 +3,49 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../store/slice/authSlice'
 import { Link } from 'react-router-dom'
+import { Header } from 'antd/lib/layout/layout'
+import { MenuOutlined } from '@ant-design/icons'
 
 const Navbar = () => {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.Auth.token)
     return (
         <div className="container-fluid">
-            <div className="header">
+            <nav>
                 <div className="logo"></div>
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                >
-                    <Menu.Item key="home">
+                <input type="checkbox" id="click" />
+                <label htmlFor="click" className="menu-btn">
+                    <i>
+                        <MenuOutlined />
+                    </i>
+                </label>
+                <ul>
+                    <li>
                         <Link to="/">Home</Link>
-                    </Menu.Item>
-                    <Menu.Item key="about">About</Menu.Item>
-                    <Menu.Item key="features">Features</Menu.Item>
-                    <Menu.Item key="works">How It Works</Menu.Item>
-                    <Menu.Item key="faq">FAQ</Menu.Item>
-                    <Menu.Item key="pricing">
-                        {isLoggedIn ? (
+                    </li>
+                    {isLoggedIn ? (
+                        <li>
                             <Button
                                 type="link"
                                 onClick={() => dispatch(logout())}
-                                style={{ color: 'white' }}
+                                style={{
+                                    color: 'white',
+                                    backgroundColor: '#48bfe3',
+                                    fontWeight: 600,
+                                }}
                             >
-                                Log out
+                                Logout
                             </Button>
-                        ) : (
+                        </li>
+                    ) : (
+                        <li>
                             <Button type="link" style={{ color: 'white' }}>
                                 Log in
                             </Button>
-                        )}
-                    </Menu.Item>
-                </Menu>
-            </div>
+                        </li>
+                    )}
+                </ul>
+            </nav>
         </div>
     )
 }

@@ -12,6 +12,8 @@ import AddEmployee from '../AddEmployee/AddEmployee'
 import AddProduct from '../AddProduct/AddProduct'
 import AllProducts from '../AllProducts/AllProducts'
 import CreateBranch from '../CreateBranch/CreateBranch'
+import AllEmployee from '../AddEmployee/AllEmployee'
+import Admin from '../Admin/Admin'
 
 export const menuItems = [
     {
@@ -36,6 +38,11 @@ export const menuItems = [
                 name: 'Add Employee',
                 to: 'setting/employee',
                 comp: <AddEmployee />,
+            },
+            {
+                name: 'All Employee',
+                to: 'setting/all_employee',
+                comp: <AllEmployee />,
             },
         ],
     },
@@ -65,6 +72,13 @@ export const menuItems = [
         exact: true,
         to: `products`,
         comp: <AllProducts />,
+        icon: <FundViewOutlined />,
+    },
+    {
+        name: 'Admin',
+        exact: true,
+        to: `admin`,
+        comp: <Admin />,
         icon: <FundViewOutlined />,
     },
 ]
