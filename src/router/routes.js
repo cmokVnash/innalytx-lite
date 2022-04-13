@@ -7,6 +7,12 @@ export const publicRoute = {
 export const privateRoute = {
     dashboard: 'dashboard',
     order: 'order',
-    product: 'product',
-    
+    products: 'products',
+    addProduct: 'add-product',
+    createOrder: 'create-order',
+    employees: 'employees',
+    customers: 'customers',
+    addEmployee: 'addEmployee',
+    addCustomer: 'addCustomer',
+    sales: 'sales',
 }

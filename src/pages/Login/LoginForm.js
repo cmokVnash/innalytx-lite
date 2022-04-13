@@ -1,13 +1,11 @@
+import { Button, Form } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { Button, Form, notification } from 'antd'
-import FormElement from '../../components/Form/GlobalFormComponent'
-import { useNavigate, Navigate } from 'react-router-dom'
-import GenerateInput from './input'
-import http from '../../https'
-import { urls } from '../../https/config'
 import { useDispatch, useSelector } from 'react-redux'
+import { Navigate, useNavigate } from 'react-router-dom'
+import FormElement from '../../components/Form/GlobalFormComponent'
+import { urls } from '../../https/config'
 import { loginReq } from '../../store/slice/authSlice'
-import { privateRoute } from '../../router/routes'
+import GenerateInput from './input'
 // import './Login.css'
 
 const AddSpaceTypeForm = () => {

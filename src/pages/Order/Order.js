@@ -1,15 +1,13 @@
+import { CloseOutlined } from '@ant-design/icons'
+import { Card, Col, Input, Layout, Row } from 'antd'
+import Meta from 'antd/lib/card/Meta'
 import React, { useState } from 'react'
-import { Card, Col, Layout, Menu, Row, Input } from 'antd'
-
 import { Link, Route, Routes } from 'react-router-dom'
 import { orderItems } from '../../components/Data/OrderData'
-import './Order.css'
+import { productsData } from '../../components/Data/ProductsData.js'
 import OrderItems from '../../components/OrderDetails/OrderItems'
-
-import { CloseOutlined } from '@ant-design/icons'
 import { useProduct } from '../../Context/ProductContext'
-import Meta from 'antd/lib/card/Meta'
-import styled from 'styled-components'
+import './Order.css'
 import {
     Bills,
     CartContainer,
@@ -28,8 +26,10 @@ import {
     OrderWrapper,
     ProductContainer,
     ProductHeading,
-    PromoBtn,
+    PromoBtn
 } from './OrderStyle'
+
+
 
 const { Search } = Input
 const { Content, Sider } = Layout
@@ -41,7 +41,7 @@ const Order = () => {
     const [items, setItems] = useState([products])
 
     const allCatValues = [
-        ...new Set(products.map((currentElm) => currentElm.category)),
+        ...new Set(productsData.map((currentElm) => currentElm.category)),
         'all',
     ]
 

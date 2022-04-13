@@ -37,8 +37,8 @@ const CreateBranch = () => {
                 onFinishFailed={onFinishFailed}
                 form={form}
             >
-                {components.map((component) => (
-                    <FormElement {...component} />
+                {components.map((component, index) => (
+                    <FormElement key={index} {...component} />
                 ))}
                 <Form.Item wrapperCol={{ offset: 4, span: 2 }} hasFeedback>
                     <Button block type="primary" htmlType="submit">

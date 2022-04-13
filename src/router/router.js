@@ -12,6 +12,7 @@ import { publicRoute, privateRoute } from './routes.js'
 import Home from '../pages/Homepage/Home.js'
 import Login from '../pages/Login/LoginForm'
 import Dashboard from '../pages/Dashboard.js'
+import Order from '../pages/Order/Order.js'
 // import { PUBLIC_ROUTE } from './appRoutes'
 
 // const Dashboard = lazy(() => import('features/Dashboard'))
@@ -59,6 +60,14 @@ function RoutesCollection() {
                         element={
                             <PrivateRoute>
                                 <Dashboard />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/order/*"
+                        element={
+                            <PrivateRoute>
+                                <Order />
                             </PrivateRoute>
                         }
                     />
