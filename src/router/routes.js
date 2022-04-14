@@ -5,7 +5,7 @@ export const publicRoute = {
 }
 
 export const privateRoute = {
-    dashboard: 'dashboard',
+    dashboard: '/dashboard',
     order: 'order',
     products: 'products',
     addProduct: 'add-product',

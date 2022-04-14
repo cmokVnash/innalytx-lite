@@ -12,8 +12,6 @@ import { columns } from '../Data/ProductColumns'
 import ProductModal from './ProductModal'
 const { Meta } = Card
 
-const api = 'http://localhost:3006/products'
-
 const AllProducts = () => {
     const [loading, setLoading] = useState(false)
     const { products, setProducts } = useProduct()
@@ -40,8 +38,8 @@ const AllProducts = () => {
     }, [])
 
     const loadProducts = async () => {
-        const response = await axios.get(api)
-        setProducts(response.data)
+        // const response = await axios.get(api)
+        // setProducts(response.data)
     }
 
     const getProduct = (name, price, details, vat) => {

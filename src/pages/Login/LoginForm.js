@@ -6,7 +6,7 @@ import FormElement from '../../components/Form/GlobalFormComponent'
 import { urls } from '../../https/config'
 import { loginReq } from '../../store/slice/authSlice'
 import GenerateInput from './input'
-// import './Login.css'
+import './Login.css'
 
 const AddSpaceTypeForm = () => {
     const navigate = useNavigate()

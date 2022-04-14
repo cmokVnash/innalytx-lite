@@ -11,8 +11,9 @@ import PropTypes from 'prop-types'
 import { publicRoute, privateRoute } from './routes.js'
 import Home from '../pages/Homepage/Home.js'
 import Login from '../pages/Login/LoginForm'
-import Dashboard from '../pages/Dashboard.js'
+
 import Order from '../pages/Order/Order.js'
+import Dashboard from '../pages/Dashboard/Dashboard.js'
 // import { PUBLIC_ROUTE } from './appRoutes'
 
 // const Dashboard = lazy(() => import('features/Dashboard'))
