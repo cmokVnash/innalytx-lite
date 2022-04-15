@@ -1,21 +1,19 @@
+import React from 'react'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { useStore } from 'react-redux'
-import http from '../../https'
-import { urls } from '../../https/config'
 import useGetUrl from '../../utils/useGetUrl'
-
+import http from '../../https'
+import toast from 'react-hot-toast'
 const initialState = {
     loading: false,
     categories: null,
-   
 }
 
 export const getCategories = createAsyncThunk(
     'categories/getCategories',
-    async () => {
-        const restaurantUrl = useGetUrl()
+    async (thunkApi) => {
+        const { restaurantUrl } = useGetUrl()
         console.log(restaurantUrl)
-        const response = await http.get(`${restaurantUrl}/category/`)
+        const response = await http.get(`${restaurantUrl}category/`)
         return response?.data
     }
 )
@@ -23,11 +21,11 @@ export const getCategories = createAsyncThunk(
 export const addCategory = createAsyncThunk(
     'categories/addCategory',
     async (formData, { dispatch }) => {
-        const restaurantUrl = useGetUrl()
+        const { restaurantUrl } = useGetUrl()
         try {
             console.log(restaurantUrl)
             const response = await http.post(
-                `${restaurantUrl}/category/`,
+                `${restaurantUrl}category/`,
                 formData
             )
 
@@ -52,12 +50,13 @@ const CategorySlice = createSlice({
             state.loading = true
         })
         builder.addCase(getCategories.rejected, (state, action) => {
-            console.log(action.payload)
+            console.log(action)
             state.loading = false
         })
         builder.addCase(addCategory.fulfilled, (state, action) => {
             console.log(action.payload)
             state.loading = false
+            toast.success('Category created')
         })
         builder.addCase(addCategory.pending, (state, action) => {
             state.loading = true
@@ -65,6 +64,7 @@ const CategorySlice = createSlice({
         builder.addCase(addCategory.rejected, (state, action) => {
             console.log(action.payload)
             state.loading = false
+            toast.error('Category could not be created')
         })
     },
 })

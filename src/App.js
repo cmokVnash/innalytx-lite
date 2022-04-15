@@ -1,42 +1,31 @@
+import { Spin } from 'antd'
 import 'antd/dist/antd.min.css'
 import React, { useEffect, useState } from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { PersistGate } from 'redux-persist/integration/react'
 import './App.css'
 import Preloader from './components/Preloader/Preloader'
-import ProductContextProvider from './Context/ProductContext'
 import RoutesCollection from './router/router'
-
+import { persistor, store } from './store/store'
+import { loadProgressBar } from 'axios-progress-bar'
+import http from './https/index'
+import { Toaster } from 'react-hot-toast'
+import { injectStore } from './utils/getStore'
 
 function App() {
     const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 2)
-    }, [])
-
+    loadProgressBar({}, http)
+    injectStore(store)
     return (
-        <>
-            {loading ? (
-                <Preloader />
-            ) : (
-                <ProductContextProvider>
-                    {/* <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/dashboard/*" element={<Dashboard />} />
-                        <Route path="/login" element={<LoginForm />} />
-                        <Route path="/order/*" element={<Order />} />
-                        <Route
-                            path="/order/conformOrder"
-                            element={<OrderDetails />}
-                        />
-                    </Routes> */}
-                    <RoutesCollection />
-                </ProductContextProvider>
-            )}
-        </>
+        <Provider store={store}>
+            <PersistGate loading={<Spin />} persistor={persistor}>
+                <Toaster position="top-center" reverseOrder={false} />
+                <BrowserRouter>{<RoutesCollection />}</BrowserRouter>
+            </PersistGate>
+        </Provider>
     )
+    // return <>{loading ? <Preloader /> : <RoutesCollection />}</>
 }
 
 export default App

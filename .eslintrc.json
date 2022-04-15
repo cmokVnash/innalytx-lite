@@ -25,6 +25,11 @@
     "plugins": ["prettier"],
     "rules": {
         "no-unused-vars": "off",
+        "no-const-assign": "warn",
+        "no-use-before-define": [
+            "error",
+            { "functions": false, "classes": false }
+        ],
         "react/prop-types": 0
     },
     "settings": {

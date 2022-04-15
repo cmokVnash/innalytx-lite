@@ -1,13 +1,15 @@
-import { CloseOutlined } from '@ant-design/icons'
+import { CiCircleFilled, CloseOutlined } from '@ant-design/icons'
 import { Card, Col, Input, Layout, Row } from 'antd'
 import Meta from 'antd/lib/card/Meta'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import { orderItems } from '../../components/Data/OrderData'
 import { productsData } from '../../components/Data/ProductsData.js'
 import OrderItems from '../../components/OrderDetails/OrderItems'
 import { useProduct } from '../../Context/ProductContext'
 import './Order.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from './../../store/slice/productSlice'
 import {
     Bills,
     CartContainer,
@@ -26,20 +28,21 @@ import {
     OrderWrapper,
     ProductContainer,
     ProductHeading,
-    PromoBtn
+    PromoBtn,
 } from './OrderStyle'
 
-
-
 const { Search } = Input
-const { Content, Sider } = Layout
+const { Content } = Layout
 const onSearch = (value) => console.log(value)
 
 const Order = () => {
-    const [collapsed, setCollapsed] = useState(true)
-    const { products, setProducts } = useProduct()
-    const [items, setItems] = useState([products])
-
+    const products = useSelector((state) => state.Product.products) || []
+    console.log(products)
+    const dispatch = useDispatch()
+    
+    useEffect(() => {
+        dispatch(getProducts())
+    }, [])
     const allCatValues = [
         ...new Set(productsData.map((currentElm) => currentElm.category)),
         'all',
@@ -48,44 +51,20 @@ const Order = () => {
     const [catItems, setCatItems] = useState(allCatValues)
 
     const filterItem = (category) => {
-        if (category === 'all') {
-            setItems(products)
-            return
-        } else {
-            const updatedItems = products.filter((currentElm) => {
-                return currentElm.category === category
-            })
-            setItems(updatedItems)
-        }
+        // if (category === 'all') {
+        //     setItems(products)
+        //     return
+        // } else {
+        //     const updatedItems = products.filter((currentElm) => {
+        //         return currentElm.category === category
+        //     })
+        //     setItems(updatedItems)
+        // }
     }
 
     return (
         <>
             <Layout style={{ minHeight: '100vh' }}>
-                <Sider
-                    collapsible
-                    collapsed={collapsed}
-                    onCollapse={() => setCollapsed(collapsed)}
-                >
-                    <div
-                        style={{
-                            height: '32px',
-                            margin: '16px',
-                            background: '#00b4d8',
-                        }}
-                        className="logo"
-                    ></div>
-
-                    {orderItems.map((menuItem, index) => (
-                        <OrderItems
-                            key={index}
-                            name={menuItem.name}
-                            exact={menuItem.exact}
-                            to={menuItem.to}
-                            icon={menuItem.icon}
-                        />
-                    ))}
-                </Sider>
                 <Layout className="site-layout">
                     <Content
                         style={{ padding: '20px 30px', background: '##e9ecef' }}
@@ -137,7 +116,7 @@ const Order = () => {
                                     ))}
                                 </CategoryContainer>
                                 <Row gutter={[2, 20]}>
-                                    {items.map((item, index) => (
+                                    {products.map((item, index) => (
                                         <Col span={8} key={index}>
                                             <Card
                                                 style={{
@@ -157,27 +136,15 @@ const Order = () => {
                                                         src="https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?size=626&ext=jpg"
                                                     />
                                                 }
-                                                actions={
-                                                    [
-                                                        // <Button
-                                                        //   style={{
-                                                        //     background: "#2a9d8f",
-                                                        //     border: "none",
-                                                        //     color: "white",
-                                                        //   }}
-                                                        // >
-                                                        //   <EditOutlined key="edit" /> Edit
-                                                        // </Button>,
-                                                        // <Button type="primary" danger>
-                                                        //   <DeleteOutlined key="delete" /> Delete
-                                                        // </Button>,
-                                                    ]
-                                                }
+                                                actions={[
+                                                    <CiCircleFilled key="1" />,
+                                                ]}
                                             >
                                                 <Meta
                                                     title={item.name}
                                                     description={
-                                                        'Price: $' + item.price
+                                                        'Price: $' +
+                                                        item.size[0].price
                                                     }
                                                 />
                                             </Card>

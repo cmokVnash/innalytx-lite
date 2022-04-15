@@ -2,7 +2,7 @@ import React from 'react'
 import { Input, Form, Checkbox } from 'antd'
 import ComponentMapping from './ComponentMapper'
 
-const FormElement = ({ component, label, required, name, rules, config }) => {
+const FormElement = ({ component, label, required, name, render, config }) => {
     const Component = ComponentMapping[component]
     return (
         <>
@@ -11,7 +11,11 @@ const FormElement = ({ component, label, required, name, rules, config }) => {
                 name={name}
                 rules={[{ required, message: 'Field is required!' }]}
             >
-                <Component {...config} />
+                {component === 'select' ? (
+                    <Component {...config}>{render()}</Component>
+                ) : (
+                    <Component {...config} />
+                )}
             </Form.Item>
         </>
     )

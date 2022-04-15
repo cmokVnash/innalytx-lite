@@ -12,6 +12,14 @@ export const dashboardRoutes = [
         path: privateRoute.addProduct,
         component: lazy(() => import('../../components/AddProduct/AddProduct')),
     },
+    {
+        path: privateRoute.order,
+        component: lazy(() => import('../../pages/Order/Order')),
+    },
+    {
+        path: privateRoute.order,
+        component: lazy(() => import('../../pages/Order/PaymentForm')),
+    },
     // {
     //     path: privateRoute.products,
     //     component: lazy(() =>
@@ -40,6 +48,4 @@ export const dashboardRoutes = [
     //     path: privateRoute.sales,
     //     component: lazy(() => import('../../components/')),
     // },
-
-
 ]

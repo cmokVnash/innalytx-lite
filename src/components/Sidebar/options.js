@@ -3,6 +3,7 @@ import {
     DashboardOutlined,
     DesktopOutlined,
     MenuOutlined,
+    OrderedListOutlined,
 } from '@ant-design/icons'
 import { privateRoute } from '../../router/routes'
 
@@ -30,6 +31,12 @@ const options = [
                 label: 'Add Product',
             },
         ],
+    },
+    {
+        key: 3,
+        path: privateRoute.order,
+        label: 'Order',
+        LeftIcon: OrderedListOutlined,
     },
 ]
 export default options

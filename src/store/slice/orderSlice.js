@@ -5,11 +5,11 @@ import http from '../../https'
 import toast from 'react-hot-toast'
 const initialState = {
     loading: false,
-    products: null,
+    orders: null,
 }
 
-export const getProducts = createAsyncThunk(
-    'products/getProducts',
+export const getOrders = createAsyncThunk(
+    'orders/getOrders',
     async (thunkApi) => {
         const { restaurantUrl } = useGetUrl()
         console.log(restaurantUrl)
@@ -18,15 +18,15 @@ export const getProducts = createAsyncThunk(
     }
 )
 
-export const addProduct = createAsyncThunk(
-    'products/addProduct',
+export const createOrder = createAsyncThunk(
+    'orders/createOrder',
     async (formData, { dispatch }) => {
         const { restaurantUrl } = useGetUrl()
         try {
             console.log(restaurantUrl)
             const response = await http.post(`${restaurantUrl}item/`, formData)
 
-            dispatch(getProducts())
+            dispatch(getOrders())
             return response?.data
         } catch (e) {
             console.log(e)
@@ -34,34 +34,34 @@ export const addProduct = createAsyncThunk(
     }
 )
 
-const ProductSlice = createSlice({
-    name: 'product',
+const OrderSlice = createSlice({
+    name: 'orders',
     initialState: initialState,
     reducer: {},
     extraReducers: (builder) => {
-        builder.addCase(getProducts.fulfilled, (state, action) => {
+        builder.addCase(getOrders.fulfilled, (state, action) => {
             console.log(action.payload)
-            state.products = action.payload
+            state.orders = action.payload
         })
-        builder.addCase(getProducts.pending, (state, action) => {
+        builder.addCase(getOrders.pending, (state, action) => {
             state.loading = true
         })
-        builder.addCase(getProducts.rejected, (state, action) => {
+        builder.addCase(getOrders.rejected, (state, action) => {
             console.log(action)
             state.loading = false
         })
-        builder.addCase(addProduct.fulfilled, (state, action) => {
+        builder.addCase(createOrder.fulfilled, (state, action) => {
             state.loading = false
-            toast.success('Product created!')
+            toast.success('Order completed!')
         })
-        builder.addCase(addProduct.pending, (state, action) => {
+        builder.addCase(createOrder.pending, (state, action) => {
             state.loading = true
         })
-        builder.addCase(addProduct.rejected, (state, action) => {
+        builder.addCase(createOrder.rejected, (state, action) => {
             state.loading = false
-            toast.error('Product cannot be created!')
+            toast.error('Order failed!')
         })
     },
 })
 
-export default ProductSlice
+export default OrderSlice
