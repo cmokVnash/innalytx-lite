@@ -62,9 +62,7 @@ const OrderSlice = createSlice({
                 state.cart = newCart
             }
         },
-        removeFromCart(state, { payload }) {
-            
-        },
+        removeFromCart(state, { payload }) {},
         deductFromCart(state, { payload }) {},
     },
     extraReducers: (builder) => {

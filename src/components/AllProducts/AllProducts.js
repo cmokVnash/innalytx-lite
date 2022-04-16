@@ -3,8 +3,19 @@ import {
     DeleteOutlined,
     EditOutlined,
     UnorderedListOutlined,
+    DownOutlined,
 } from '@ant-design/icons'
-import { Button, Card, Col, Row, Table } from 'antd'
+import {
+    Button,
+    Card,
+    Col,
+    Row,
+    Table,
+    Badge,
+    Menu,
+    Dropdown,
+    Space,
+} from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,9 +24,6 @@ import { getProducts } from '../../store/slice/productSlice'
 import { columns } from '../Data/ProductColumns'
 import ProductModal from './ProductModal'
 const { Meta } = Card
-
-import { Badge, Menu, Dropdown, Space } from 'antd'
-import { DownOutlined } from '@ant-design/icons'
 
 const AllProducts = () => {
     const [loading, setLoading] = useState(false)
@@ -51,44 +59,46 @@ const AllProducts = () => {
         showModal()
     }
 
-    const expandedRowRender = () => {
+    const expandedRowRender = (record) => {
+        console.log('record', record)
         const columns = [
-            { title: 'Sl No', dataIndex: 'index', key: 'index' },
             { title: 'Size', dataIndex: 'size', key: 'size' },
             { title: 'Price', dataIndex: 'price', key: 'price' },
         ]
 
-        const data = []
-        products.map((product, index) => {
-            return data.push({
-                key: index,
-                index: index + 1,
-                size: product.size.map((s) => <span key={s.id}>{s.size}</span>),
-                price: product.size.map((s) => (
-                    <span key={s.id}>{s.price}</span>
-                )),
-            })
-        })
-        return <Table columns={columns} dataSource={data} pagination={false} />
+        return (
+            <Table
+                columns={columns}
+                dataSource={record.size}
+                pagination={false}
+            />
+        )
     }
 
     const columns = [
         { title: 'Name', dataIndex: 'name', key: 'name' },
         { title: 'Details', dataIndex: 'details', key: 'details' },
-        { title: 'Base Price', dataIndex: 'price', key: 'price' },
+        {
+            title: 'Base Price',
+            dataIndex: 'size',
+            key: 'price',
+            render: (size) => {
+                return size[0].price
+            },
+        },
 
         { title: 'Action', key: 'operation', render: () => <a>Publish</a> },
     ]
 
-    const data = []
-    products.map((product, index) => {
-        return data.push({
-            key: index,
-            name: product.name,
-            details: product.details,
-            price: product.size[0].price,
-        })
-    })
+    // const data = []
+    // products.map((product, index) => {
+    //     return data.push({
+    //         key: index,
+    //         name: product.name,
+    //         details: product.details,
+    //         price: product.size[0].price,
+    //     })
+    // })
 
     return (
         <div>
@@ -164,10 +174,11 @@ const AllProducts = () => {
                 </Row>
             ) : (
                 <Table
+                    rowKey={'id'}
                     className="components-table-demo-nested"
                     columns={columns}
                     expandable={{ expandedRowRender }}
-                    dataSource={data}
+                    dataSource={products}
                 />
             )}
             {
