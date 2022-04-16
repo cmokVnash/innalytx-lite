@@ -1,5 +1,9 @@
-import { CiCircleFilled, CloseOutlined } from '@ant-design/icons'
-import { Card, Col, Input, Layout, Row } from 'antd'
+import {
+    CiCircleFilled,
+    CloseOutlined,
+    PlusCircleOutlined,
+} from '@ant-design/icons'
+import { Card, Col, Input, Layout, Row, Radio, Button, Typography } from 'antd'
 import Meta from 'antd/lib/card/Meta'
 import React, { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
@@ -39,7 +43,7 @@ const Order = () => {
     const products = useSelector((state) => state.Product.products) || []
     console.log(products)
     const dispatch = useDispatch()
-    
+
     useEffect(() => {
         dispatch(getProducts())
     }, [])
@@ -120,7 +124,7 @@ const Order = () => {
                                         <Col span={8} key={index}>
                                             <Card
                                                 style={{
-                                                    width: 300,
+                                                    width: 200,
                                                     boxShadow:
                                                         ' rgba(0, 0, 0, 0.35) 0px 1px 3px',
                                                     backgroundColor: '#edf2fb',
@@ -137,15 +141,47 @@ const Order = () => {
                                                     />
                                                 }
                                                 actions={[
-                                                    <CiCircleFilled key="1" />,
+                                                    <div key="1">
+                                                        {/* <PlusCircleOutlined /> */}
+                                                        Add to cart
+                                                    </div>,
                                                 ]}
                                             >
                                                 <Meta
                                                     title={item.name}
-                                                    description={
-                                                        'Price: $' +
-                                                        item.size[0].price
-                                                    }
+                                                    description={[
+                                                        <div key="1">
+                                                            <div>
+                                                                {'Price: $' +
+                                                                    item.size[0]
+                                                                        .price}
+                                                            </div>
+                                                        </div>,
+                                                        <Radio.Group
+                                                            key="r-1"
+                                                            value={'l'}
+                                                            onChange={() => {}}
+                                                        >
+                                                            <Button
+                                                                value="large"
+                                                                shape="circle"
+                                                            >
+                                                                l
+                                                            </Button>
+                                                            <Button
+                                                                value="default"
+                                                                shape="circle"
+                                                            >
+                                                                s
+                                                            </Button>
+                                                            <Button
+                                                                value="small"
+                                                                shape="circle"
+                                                            >
+                                                                m
+                                                            </Button>
+                                                        </Radio.Group>,
+                                                    ]}
                                                 />
                                             </Card>
                                         </Col>

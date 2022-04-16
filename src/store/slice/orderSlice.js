@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 const initialState = {
     loading: false,
     orders: null,
+    cart: [],
 }
 
 export const getOrders = createAsyncThunk(
@@ -13,7 +14,7 @@ export const getOrders = createAsyncThunk(
     async (thunkApi) => {
         const { restaurantUrl } = useGetUrl()
         console.log(restaurantUrl)
-        const response = await http.get(`${restaurantUrl}item/`)
+        const response = await http.get(`${restaurantUrl}order/`)
         return response?.data
     }
 )
@@ -24,7 +25,7 @@ export const createOrder = createAsyncThunk(
         const { restaurantUrl } = useGetUrl()
         try {
             console.log(restaurantUrl)
-            const response = await http.post(`${restaurantUrl}item/`, formData)
+            const response = await http.post(`${restaurantUrl}order/`, formData)
 
             dispatch(getOrders())
             return response?.data
@@ -37,7 +38,35 @@ export const createOrder = createAsyncThunk(
 const OrderSlice = createSlice({
     name: 'orders',
     initialState: initialState,
-    reducer: {},
+    reducer: {
+        addToCart(state, { payload }) {
+            let found = false
+            let newCart = state.cart.map((it) => {
+                if (payload.id == it.id) {
+                    found = true
+                    return {
+                        ...it,
+                        count: payload.count + 1,
+                    }
+                } else {
+                    return it
+                }
+            })
+
+            if (!found) {
+                state.cart = [
+                    ...state.cart,
+                    { id: payload.id, count: 1, item: payload.item },
+                ]
+            } else {
+                state.cart = newCart
+            }
+        },
+        removeFromCart(state, { payload }) {
+            
+        },
+        deductFromCart(state, { payload }) {},
+    },
     extraReducers: (builder) => {
         builder.addCase(getOrders.fulfilled, (state, action) => {
             console.log(action.payload)
