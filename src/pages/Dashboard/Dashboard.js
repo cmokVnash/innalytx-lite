@@ -26,8 +26,21 @@ export default function Dashboard() {
             </Header>
             <Layout>
                 <Sidebar />
-                <Layout className="main-content" style={{ height: '100vh' }}>
-                    <Content style={{ padding: '20px', margin: '10px' }}>
+                <Layout
+                    className="main-content"
+                    style={{
+                        height: 'calc(100vh - 65px)',
+                        overflowY: 'scroll',
+                    }}
+                >
+                    <Content
+                        style={{
+                            height: '100vh',
+
+                            padding: '20px',
+                            margin: '10px',
+                        }}
+                    >
                         <DashboardRouter />
                     </Content>
                 </Layout>
