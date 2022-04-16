@@ -4,6 +4,7 @@ import {
     DesktopOutlined,
     MenuOutlined,
     OrderedListOutlined,
+    UserAddOutlined,
 } from '@ant-design/icons'
 import { privateRoute } from '../../router/routes'
 
@@ -37,6 +38,12 @@ const options = [
         path: privateRoute.order,
         label: 'Order',
         LeftIcon: OrderedListOutlined,
+    },
+    {
+        key: 4,
+        path: privateRoute.admin,
+        label: 'Admin',
+        LeftIcon: UserAddOutlined,
     },
 ]
 export default options

@@ -20,6 +20,10 @@ export const dashboardRoutes = [
         path: privateRoute.order,
         component: lazy(() => import('../../pages/Order/PaymentForm')),
     },
+    {
+        path: privateRoute.admin,
+        component: lazy(() => import('../../components/Admin/Admin')),
+    },
     // {
     //     path: privateRoute.products,
     //     component: lazy(() =>

@@ -15,4 +15,5 @@ export const privateRoute = {
     addEmployee: 'addEmployee',
     addCustomer: 'addCustomer',
     sales: 'sales',
+    admin: 'admin',
 }

@@ -1,22 +1,31 @@
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { getProducts } from '../../store/slice/productSlice'
+
+// const products = useSelector((state) => state.Product.products) || []
+
+// const dispatch = useDispatch()
+
+// useEffect(() => {
+//     dispatch(getProducts())
+// }, [])
+
 export const columns = [
     {
-      key: "1",
-      title: "Name",
-      dataIndex: "name",
+        key: '1',
+        title: 'Name',
+        dataIndex: 'name',
     },
     {
-      key: "2",
-      title: "Price",
-      dataIndex: "price",
+        key: '2',
+        title: 'Details',
+        dataIndex: 'details',
     },
     {
-      key: "3",
-      title: "Vat",
-      dataIndex: "vat",
+        title: 'Action',
+        dataIndex: '',
+        key: 'x',
+        render: () => <Link to="/dashboard">View</Link>,
     },
-    {
-      key: "4",
-      title: "Category",
-      dataIndex: "category",
-    },
-  ];
+]
