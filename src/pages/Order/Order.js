@@ -71,7 +71,7 @@ const Order = () => {
             <Layout style={{ minHeight: '100vh' }}>
                 <Layout className="site-layout">
                     <Content
-                        style={{ padding: '20px 30px', background: '##e9ecef' }}
+                        style={{ padding: '10px 20px', background: '##e9ecef' }}
                     >
                         <Routes>
                             {orderItems.map((menu, index) => (

@@ -4,8 +4,7 @@ const SidebarWrapper = styled.div`
     .sidebar {
         z-index: 1000;
         width: 280px;
-        flex: 0 0 280px;
-        height: 100%;
+        height: 100vh;
         transition: all 0.33s;
 
         @media only screen and (max-width: 767px) {
@@ -59,7 +58,7 @@ const SidebarWrapper = styled.div`
             a {
                 margin: 1rem 0;
                 padding: 1rem 0;
-                padding-left: 20%;
+                padding-left: 10%;
                 position: relative;
                 width: 100%;
                 transition: all 0.3s ease-in-out;

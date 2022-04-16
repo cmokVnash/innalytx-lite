@@ -1,6 +1,7 @@
 import { Table } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getProducts } from '../../store/slice/productSlice'
 
 const columns = [
     { title: 'Name', dataIndex: 'name', key: 'name' },

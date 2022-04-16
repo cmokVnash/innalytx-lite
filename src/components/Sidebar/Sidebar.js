@@ -26,6 +26,18 @@ export default function Sidebar() {
                 //     overflowY: 'auto',
                 // }}
             >
+                {/* <div
+                    className="logo"
+                    style={{
+                        height: '32px',
+                        margin: '16px',
+                        color: 'lightGray',
+                        fontSize: '25px',
+                        paddingLeft: '25px',
+                    }}
+                >
+                    Innalytx
+                </div> */}
                 <Menu theme="dark" mode="inline">
                     {options.map((singleOption, index) => {
                         const { key, path, label, LeftIcon, children } =

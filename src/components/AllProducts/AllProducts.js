@@ -7,17 +7,25 @@ import {
 import { Button, Card, Col, Row, Table } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../store/slice/productSlice'
 // import { useProduct } from '../../Context/ProductContext'
 import { columns } from '../Data/ProductColumns'
 import ProductModal from './ProductModal'
 const { Meta } = Card
 
+import { Badge, Menu, Dropdown, Space } from 'antd'
+import { DownOutlined } from '@ant-design/icons'
+
 const AllProducts = () => {
     const [loading, setLoading] = useState(false)
-    const { products, setProducts } = useState([])
+    // const { products, setProducts } = useState([])
     const [productView, setProductView] = useState(false)
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [modalProduct, setModalProduct] = useState([])
+
+    const products = useSelector((state) => state.Product.products) || []
+    console.log(products)
 
     const showModal = () => {
         setIsModalVisible(true)
@@ -31,22 +39,56 @@ const AllProducts = () => {
         setIsModalVisible(false)
     }
 
-    // useEffect(() => {
-    //     setLoading(true)
-    //     loadProducts()
-    //     setLoading(false)
-    // }, [])
+    const dispatch = useDispatch()
 
-    const loadProducts = async () => {
-        // const response = await axios.get(api)
-        // setProducts(response.data)
-    }
+    useEffect(() => {
+        dispatch(getProducts())
+    }, [])
 
     const getProduct = (name, price, details, vat) => {
         let tempData = [name, price, details, vat]
         setModalProduct((pd) => [1, ...tempData])
         showModal()
     }
+
+    const expandedRowRender = () => {
+        const columns = [
+            { title: 'Sl No', dataIndex: 'index', key: 'index' },
+            { title: 'Size', dataIndex: 'size', key: 'size' },
+            { title: 'Price', dataIndex: 'price', key: 'price' },
+        ]
+
+        const data = []
+        products.map((product, index) => {
+            return data.push({
+                key: index,
+                index: index + 1,
+                size: product.size.map((s) => <span key={s.id}>{s.size}</span>),
+                price: product.size.map((s) => (
+                    <span key={s.id}>{s.price}</span>
+                )),
+            })
+        })
+        return <Table columns={columns} dataSource={data} pagination={false} />
+    }
+
+    const columns = [
+        { title: 'Name', dataIndex: 'name', key: 'name' },
+        { title: 'Details', dataIndex: 'details', key: 'details' },
+        { title: 'Base Price', dataIndex: 'price', key: 'price' },
+
+        { title: 'Action', key: 'operation', render: () => <a>Publish</a> },
+    ]
+
+    const data = []
+    products.map((product, index) => {
+        return data.push({
+            key: index,
+            name: product.name,
+            details: product.details,
+            price: product.size[0].price,
+        })
+    })
 
     return (
         <div>
@@ -71,7 +113,7 @@ const AllProducts = () => {
                 </Button>
             )}
             {productView ? (
-                <Row gutter={[16, 24]}>
+                <Row gutter={[12, 24]}>
                     {products.map((product, index) => (
                         <Col span={6} key={index}>
                             <Card
@@ -91,7 +133,7 @@ const AllProducts = () => {
                                 cover={
                                     <img
                                         alt="example"
-                                        src="https://images.unsplash.com/photo-1561758033-f8ff74d6494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                                        src="https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?size=626&ext=jpg"
                                     />
                                 }
                                 actions={[
@@ -112,7 +154,9 @@ const AllProducts = () => {
                             >
                                 <Meta
                                     title={product.name}
-                                    description={'Price: $' + product.price}
+                                    description={
+                                        'Price: $' + product.size[0].price
+                                    }
                                 />
                             </Card>
                         </Col>
@@ -120,10 +164,11 @@ const AllProducts = () => {
                 </Row>
             ) : (
                 <Table
-                    loading={loading}
+                    className="components-table-demo-nested"
                     columns={columns}
-                    dataSource={products}
-                ></Table>
+                    expandable={{ expandedRowRender }}
+                    dataSource={data}
+                />
             )}
             {
                 <ProductModal
