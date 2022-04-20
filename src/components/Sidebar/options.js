@@ -7,7 +7,9 @@ import {
     UserAddOutlined,
     UsergroupDeleteOutlined,
 } from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 import { privateRoute } from '../../router/routes'
+import { store } from '../../store/store'
 
 const options = [
     {

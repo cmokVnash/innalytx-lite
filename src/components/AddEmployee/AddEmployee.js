@@ -22,28 +22,28 @@ const AddEmployee = () => {
             name: 'name',
             label: 'Full Name',
             required: true,
-            config: { placeholder: "Item's Name is Required" },
+            config: { placeholder: 'Enter Your Name' },
         },
         {
             component: 'input',
             name: 'email',
             label: 'Email',
             required: true,
-            config: { placeholder: "Item's Name is Required" },
+            config: { placeholder: 'Your Email' },
         },
         {
             component: 'input',
             name: 'password',
             label: 'Password',
             required: true,
-            config: { placeholder: "Item's Name is Required" },
+            config: { placeholder: 'Your Password' },
         },
         {
             component: 'input',
             name: 'address',
             label: 'Address',
             required: true,
-            config: { placeholder: "Item's Name is Required" },
+            config: { placeholder: 'Your Address' },
         },
     ]
 

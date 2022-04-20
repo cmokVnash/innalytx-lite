@@ -30,7 +30,7 @@ const FormElement = ({
                 {component === 'select' ? (
                     <Component>{render()}</Component>
                 ) : (
-                    <Component />
+                    <Component {...config} />
                 )}
             </Form.Item>
         </>

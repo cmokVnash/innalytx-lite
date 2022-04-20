@@ -13,6 +13,12 @@ const { Sider } = Layout
 export default function Sidebar() {
     // const { collapsed } = useSelector((state) => state.App)
 
+    const currentUser = useSelector((state) => state.Auth)
+    const { isStuff, isSuperUser } = currentUser
+    console.log(isStuff, isSuperUser)
+
+    const filteredOptions = options.filter((option) => option.label !== 'Admin')
+
     return (
         <SidebarWrapper>
             <Sider
@@ -39,31 +45,63 @@ export default function Sidebar() {
                     Innalytx
                 </div> */}
                 <Menu theme="dark" mode="inline">
-                    {options.map((singleOption, index) => {
-                        const { key, path, label, LeftIcon, children } =
-                            singleOption
-                        return children ? (
-                            <SubMenu
-                                key={key}
-                                icon={<LeftIcon />}
-                                title={label}
-                            >
-                                {children.map((subMenuItem) => (
-                                    <MenuItem key={subMenuItem.key}>
-                                        <NavLink end to={subMenuItem.path}>
-                                            {subMenuItem.label}
-                                        </NavLink>
-                                    </MenuItem>
-                                ))}
-                            </SubMenu>
-                        ) : (
-                            <MenuItem key={key} icon={<LeftIcon />}>
-                                <NavLink end to={path}>
-                                    {label}
-                                </NavLink>
-                            </MenuItem>
-                        )
-                    })}
+                    {isStuff
+                        ? options.map((singleOption, index) => {
+                              const { key, path, label, LeftIcon, children } =
+                                  singleOption
+                              return children ? (
+                                  <SubMenu
+                                      key={key}
+                                      icon={<LeftIcon />}
+                                      title={label}
+                                  >
+                                      {children.map((subMenuItem) => (
+                                          <MenuItem key={subMenuItem.key}>
+                                              <NavLink
+                                                  end
+                                                  to={subMenuItem.path}
+                                              >
+                                                  {subMenuItem.label}
+                                              </NavLink>
+                                          </MenuItem>
+                                      ))}
+                                  </SubMenu>
+                              ) : (
+                                  <MenuItem key={key} icon={<LeftIcon />}>
+                                      <NavLink end to={path}>
+                                          {label}
+                                      </NavLink>
+                                  </MenuItem>
+                              )
+                          })
+                        : filteredOptions.map((singleOption, index) => {
+                              const { key, path, label, LeftIcon, children } =
+                                  singleOption
+                              return children ? (
+                                  <SubMenu
+                                      key={key}
+                                      icon={<LeftIcon />}
+                                      title={label}
+                                  >
+                                      {children.map((subMenuItem) => (
+                                          <MenuItem key={subMenuItem.key}>
+                                              <NavLink
+                                                  end
+                                                  to={subMenuItem.path}
+                                              >
+                                                  {subMenuItem.label}
+                                              </NavLink>
+                                          </MenuItem>
+                                      ))}
+                                  </SubMenu>
+                              ) : (
+                                  <MenuItem key={key} icon={<LeftIcon />}>
+                                      <NavLink end to={path}>
+                                          {label}
+                                      </NavLink>
+                                  </MenuItem>
+                              )
+                          })}
                 </Menu>
             </Sider>
         </SidebarWrapper>

@@ -10,20 +10,6 @@ const AllEmployee = () => {
     const employee = useSelector((state) => state.Employee.employees) || []
     console.log(employee)
 
-    const data = []
-    employee.map((e, index) => {
-        return data.push({
-            id: e.id,
-            key: index,
-            index: index + 1,
-            name: e.user.name,
-            email: e.user.email,
-            address: e.address,
-        })
-    })
-
-    console.log(data)
-
     useEffect(() => {
         dispatch(getEmployees())
     }, [])
@@ -71,6 +57,18 @@ const AllEmployee = () => {
             },
         },
     ]
+
+    const data = []
+    employee.map((e, index) => {
+        return data.push({
+            id: e.id,
+            key: index,
+            index: index + 1,
+            name: e.user.name,
+            email: e.user.email,
+            address: e.address,
+        })
+    })
 
     return (
         <>

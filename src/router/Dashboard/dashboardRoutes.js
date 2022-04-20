@@ -1,5 +1,8 @@
 import { lazy } from 'react'
+import { useSelector } from 'react-redux'
 import { privateRoute } from '../routes'
+
+const isStaff = true
 
 export const dashboardRoutes = [
     {
@@ -36,6 +39,7 @@ export const dashboardRoutes = [
             import('../../components/AddEmployee/AddEmployee')
         ),
     },
+
     // {
     //     path: privateRoute.products,
     //     component: lazy(() =>
