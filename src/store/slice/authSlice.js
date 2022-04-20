@@ -7,6 +7,7 @@ const initState = {
     loading: false,
     isFetched: true,
     restaurantName: null,
+    isAdmin: null,
 }
 export const loginReq = createAsyncThunk(
     'auth/loginReq',
@@ -62,8 +63,6 @@ const AuthSlice = createSlice({
             state.restaurantName = action.payload?.restaurant_name
         })
         builder.addCase(loginReq.pending, (state, action) => {
-           
-
             state.loading = true
         })
         builder.addCase(loginReq.rejected, (state, action) => {

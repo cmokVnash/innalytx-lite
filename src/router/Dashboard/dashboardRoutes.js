@@ -24,6 +24,18 @@ export const dashboardRoutes = [
         path: privateRoute.admin,
         component: lazy(() => import('../../components/Admin/Admin')),
     },
+    {
+        path: privateRoute.employees,
+        component: lazy(() =>
+            import('../../components/AddEmployee/AllEmployee')
+        ),
+    },
+    {
+        path: privateRoute.addEmployee,
+        component: lazy(() =>
+            import('../../components/AddEmployee/AddEmployee')
+        ),
+    },
     // {
     //     path: privateRoute.products,
     //     component: lazy(() =>

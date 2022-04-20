@@ -8,7 +8,15 @@ const componentMapping = {
     select: Select,
 }
 
-const FormElement = ({ component, label, required, name, rules, render }) => {
+const FormElement = ({
+    component,
+    label,
+    required,
+    name,
+    rules,
+    render,
+    config,
+}) => {
     const Component = componentMapping[component]
 
     return (
@@ -18,7 +26,6 @@ const FormElement = ({ component, label, required, name, rules, render }) => {
                 wrapperCol={{ span: 10 }}
                 label={label}
                 name={name}
-                // rules={[{ required, message: "Field is required!" }]}
             >
                 {component === 'select' ? (
                     <Component>{render()}</Component>

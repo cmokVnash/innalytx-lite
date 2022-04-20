@@ -5,6 +5,7 @@ import {
     MenuOutlined,
     OrderedListOutlined,
     UserAddOutlined,
+    UsergroupDeleteOutlined,
 } from '@ant-design/icons'
 import { privateRoute } from '../../router/routes'
 
@@ -35,12 +36,30 @@ const options = [
     },
     {
         key: 3,
+        path: privateRoute.products,
+        label: 'Employee',
+        LeftIcon: UsergroupDeleteOutlined,
+        children: [
+            {
+                key: 'sub-3',
+                path: privateRoute.employees,
+                label: 'All Employee',
+            },
+            {
+                key: 'sub-4',
+                path: privateRoute.addEmployee,
+                label: 'Add Employee',
+            },
+        ],
+    },
+    {
+        key: 4,
         path: privateRoute.order,
         label: 'Order',
         LeftIcon: OrderedListOutlined,
     },
     {
-        key: 4,
+        key: 5,
         path: privateRoute.admin,
         label: 'Admin',
         LeftIcon: UserAddOutlined,
