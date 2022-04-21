@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { store } from './getStore'
 import { urls } from '../https/config'
-import { useDispatch, useSelector } from 'react-redux'
 
 const useGetUrl = () => {
     const state = store.getState()

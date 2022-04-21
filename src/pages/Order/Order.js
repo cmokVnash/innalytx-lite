@@ -43,7 +43,7 @@ const Order = () => {
     const products = useSelector((state) => state.Product.products) || []
     console.log(products)
     const dispatch = useDispatch()
-
+    const [currentPrice, setCurrentPrice] = useState(null)
     useEffect(() => {
         dispatch(getProducts())
     }, [])
@@ -128,6 +128,7 @@ const Order = () => {
                                                     boxShadow:
                                                         ' rgba(0, 0, 0, 0.35) 0px 1px 3px',
                                                     backgroundColor: '#edf2fb',
+                                                    padding: '2px',
                                                 }}
                                                 cover={
                                                     <img
@@ -159,27 +160,21 @@ const Order = () => {
                                                         </div>,
                                                         <Radio.Group
                                                             key="r-1"
-                                                            value={'l'}
-                                                            onChange={() => {}}
+                                                            defaultvalue={'l'}
+                                                            onChange={(e) => {
+                                                                return e.target
+                                                                    .value
+                                                            }}
                                                         >
-                                                            <Button
-                                                                value="large"
-                                                                shape="circle"
-                                                            >
+                                                            <Radio.Button value="l">
                                                                 l
-                                                            </Button>
-                                                            <Button
-                                                                value="default"
-                                                                shape="circle"
-                                                            >
+                                                            </Radio.Button>
+                                                            <Radio.Button value="m">
                                                                 s
-                                                            </Button>
-                                                            <Button
-                                                                value="small"
-                                                                shape="circle"
-                                                            >
+                                                            </Radio.Button>
+                                                            <Radio.Button value="s">
                                                                 m
-                                                            </Button>
+                                                            </Radio.Button>
                                                         </Radio.Group>,
                                                     ]}
                                                 />

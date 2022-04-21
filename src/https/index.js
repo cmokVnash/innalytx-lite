@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { message } from 'antd'
+// import { store } from '../store/store'
 import { store } from '../utils/getStore'
 
 const http = axios.create({

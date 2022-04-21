@@ -17,6 +17,7 @@ function App() {
     const [loading, setLoading] = useState(true)
     loadProgressBar({}, http)
     injectStore(store)
+  
     return (
         <Provider store={store}>
             <PersistGate loading={<Spin />} persistor={persistor}>
