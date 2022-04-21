@@ -86,8 +86,6 @@ const AllProducts = () => {
                 return size[0].price
             },
         },
-
-        { title: 'Action', key: 'operation', render: () => <a>Publish</a> },
     ]
 
     // const data = []

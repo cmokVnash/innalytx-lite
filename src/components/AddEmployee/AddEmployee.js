@@ -2,12 +2,13 @@ import React from 'react'
 import { Form, Button, Select } from 'antd'
 import FormElement from './FormElement'
 import { useProduct } from '../../Context/ProductContext'
+import { useDispatch } from 'react-redux'
+import { addEmployee } from '../../store/slice/employeeSlice'
 
 const AddEmployee = () => {
-    const { products, setProducts } = useProduct()
-    console.log(products)
+    const dispatch = useDispatch()
     const onFinish = (values) => {
-        console.log('Success:', values)
+        dispatch(addEmployee(values))
     }
     const { useForm } = Form
     const [form] = useForm()
@@ -21,54 +22,28 @@ const AddEmployee = () => {
             name: 'name',
             label: 'Full Name',
             required: true,
-        },
-        {
-            component: 'input',
-            name: 'address',
-            label: 'Address',
-            required: true,
-        },
-        {
-            component: 'input',
-            name: 'national_id',
-            label: 'National Id',
-            required: true,
+            config: { placeholder: 'Enter Your Name' },
         },
         {
             component: 'input',
             name: 'email',
             label: 'Email',
             required: true,
+            config: { placeholder: 'Your Email' },
         },
         {
             component: 'input',
-            name: 'phone',
-            label: 'Phone',
+            name: 'password',
+            label: 'Password',
             required: true,
+            config: { placeholder: 'Your Password' },
         },
         {
             component: 'input',
-            name: 'photo',
-            label: 'Photo',
+            name: 'address',
+            label: 'Address',
             required: true,
-        },
-        {
-            component: 'select',
-            name: 'position',
-            label: 'Position',
-            required: true,
-            render: () => {
-                products.map((option, key) => {
-                    return (
-                        <Select.Option
-                            key={`${option.name}-${key}`}
-                            value={option.name}
-                        >
-                            {option.name}
-                        </Select.Option>
-                    )
-                })
-            },
+            config: { placeholder: 'Your Address' },
         },
     ]
 

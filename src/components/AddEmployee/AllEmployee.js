@@ -1,62 +1,78 @@
 import { Table } from 'antd'
-import React from 'react'
-
-const columns = [
-    {
-        key: '1',
-        title: 'Name',
-        dataIndex: 'name',
-    },
-    {
-        key: '2',
-        title: 'Email',
-        dataIndex: 'email',
-    },
-    {
-        key: '3',
-        title: 'Password',
-        dataIndex: 'password',
-    },
-    {
-        key: '4',
-        title: 'Address',
-        dataIndex: 'address',
-    },
-]
-
-const employee = [
-    {
-        email: 'asif@gmail.com',
-        name: 'Asif Omi',
-        password: 'xy16sj7sd',
-        address: '23/4 banasree',
-    },
-
-    {
-        email: 'tareq@gmail.com',
-        name: 'Tareq Ferdous',
-        password: 'xy16sj7sd',
-        address: '23/4 pabna',
-    },
-    {
-        email: 'asif@gmail.com',
-        name: 'Asif Omi',
-        password: 'xy16sj7sd',
-        address: '23/4 banasree',
-    },
-
-    {
-        email: 'tareq@gmail.com',
-        name: 'Tareq Ferdous',
-        password: 'xy16sj7sd',
-        address: '23/4 pabna',
-    },
-]
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteEmployee, getEmployees } from '../../store/slice/employeeSlice'
+import { Link } from 'react-router-dom'
 
 const AllEmployee = () => {
+    const dispatch = useDispatch()
+
+    const employee = useSelector((state) => state.Employee.employees) || []
+    console.log(employee)
+
+    useEffect(() => {
+        dispatch(getEmployees())
+    }, [])
+
+    const columns = [
+        {
+            key: '1',
+            title: 'Sl',
+            dataIndex: 'index',
+        },
+        {
+            key: '1',
+            title: 'Name',
+            dataIndex: 'name',
+        },
+        {
+            key: '2',
+            title: 'Email',
+            dataIndex: 'email',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+            render: (address) => {
+                console.log(address)
+                return address
+            },
+        },
+
+        {
+            title: 'Action',
+            dataIndex: 'id',
+            key: 'x',
+            render: (id) => {
+                console.log(id)
+                return (
+                    <Link
+                        onClick={() => dispatch(deleteEmployee({ id: id }))}
+                        to=""
+                    >
+                        Delete
+                    </Link>
+                )
+            },
+        },
+    ]
+
+    const data = []
+    employee.map((e, index) => {
+        return data.push({
+            id: e.id,
+            key: index,
+            index: index + 1,
+            name: e.user.name,
+            email: e.user.email,
+            address: e.address,
+        })
+    })
+
     return (
         <>
-            <Table columns={columns} dataSource={employee}></Table>
+            <Table columns={columns} dataSource={data}></Table>
         </>
     )
 }

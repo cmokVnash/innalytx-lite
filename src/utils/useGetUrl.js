@@ -8,7 +8,7 @@ const useGetUrl = () => {
     const { suffixSubdomainUrl, rootUrl, prefixSubdomainUrl } = urls
     const restaurantUrl = `${prefixSubdomainUrl}${restaurantName}.${suffixSubdomainUrl}/`
 
-    return { restaurantUrl }
+    return { restaurantUrl, restaurantName }
 }
 
 export default useGetUrl
