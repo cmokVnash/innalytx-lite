@@ -35,6 +35,7 @@ import {
   PromoBtn,
 } from './OrderStyle'
 import ItemSelectionContainer from './ItemSelectionContainer/ItemSelectionContainer'
+import { addToCart } from '../../store/slice/orderSlice'
 
 const { Search } = Input
 const { Content } = Layout
@@ -86,7 +87,9 @@ const Order = () => {
       return item?.size?.[0].price
     }
   }
-
+  const addItemToCart = (item) => {
+    dispatch(addToCart(item))
+  }
   return (
     <>
       <Layout style={{ minHeight: '100vh' }}>
@@ -160,10 +163,20 @@ const Order = () => {
                           />
                         }
                         actions={[
-                          <div key="1">
+                          <Button
+                            key="1"
+                            onClick={() => {
+                              addItemToCart({
+                                id: item.id,
+                                price: item.size[currentSizeIndex]?.price,
+                                size: item.size[currentSizeIndex].size,
+                                name: item.name,
+                              })
+                            }}
+                          >
                             {/* <PlusCircleOutlined /> */}
                             Add to cart
-                          </div>,
+                          </Button>,
                         ]}
                       >
                         <Meta
@@ -171,7 +184,6 @@ const Order = () => {
                           description={[
                             <Radio.Group
                               key="r-1"
-                              defaultValue={0}
                               onChange={(e) => {
                                 console.log(e)
                                 setCurrentSizeIndex(e.target.value)

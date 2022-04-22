@@ -1,19 +1,19 @@
-import React from "react";
-import { Form, Input, Button, Select } from "antd";
-import { UserOutlined, LockOutlined, PhoneOutlined } from "@ant-design/icons";
+import React from 'react'
+import { Form, Input, Button, Select } from 'antd'
+import { UserOutlined, LockOutlined, PhoneOutlined } from '@ant-design/icons'
 
 const PaymentForm = () => {
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+    console.log('Received values of form: ', values)
+  }
   return (
     <div>
       <Form
         style={{
-          maxWidth: "450px",
-          display: "block",
-          margin: "0 auto",
-          padding: "20px 0px",
+          display: 'block',
+          margin: '',
+          padding: '20px',
+          background: '#e9ecef',
         }}
         name="normal_login"
         className="login-form"
@@ -21,12 +21,12 @@ const PaymentForm = () => {
       >
         <h3
           style={{
-            fontSize: "20px",
-            color: "#3d405b",
-            fontWeight: "700",
-            width: "32%",
-            borderBottom: "3px solid #3d405b",
-            marginBottom: "20px",
+            fontSize: '20px',
+            color: '#3d405b',
+            fontWeight: '700',
+            width: '32%',
+            borderBottom: '3px solid #3d405b',
+            marginBottom: '20px',
           }}
         >
           Apply Payment
@@ -37,7 +37,7 @@ const PaymentForm = () => {
           label="Discount"
           rules={[
             {
-              message: "Please input your Username!",
+              message: 'Please input your Username!',
             },
           ]}
         >
@@ -50,7 +50,7 @@ const PaymentForm = () => {
           rules={[
             {
               required: true,
-              message: "Please input your Password!",
+              message: 'Please input your Password!',
             },
           ]}
         >
@@ -66,7 +66,7 @@ const PaymentForm = () => {
           rules={[
             {
               required: true,
-              message: "Please input your Password!",
+              message: 'Please input your Password!',
             },
           ]}
         >
@@ -78,7 +78,7 @@ const PaymentForm = () => {
 
         <Form.Item>
           <Button
-            style={{ width: "210px", background: "#3d405b" }}
+            style={{ width: '210px', background: '#3d405b' }}
             type="primary"
             htmlType="submit"
             className="login-form-button"
@@ -87,9 +87,9 @@ const PaymentForm = () => {
           </Button>
           <Button
             style={{
-              width: "210px",
-              background: "#3d405b",
-              marginLeft: "30px",
+              width: '210px',
+              background: '#3d405b',
+              marginLeft: '30px',
             }}
             type="primary"
             htmlType="submit"
@@ -100,7 +100,7 @@ const PaymentForm = () => {
         </Form.Item>
       </Form>
     </div>
-  );
-};
+  )
+}
 
-export default PaymentForm;
+export default PaymentForm
