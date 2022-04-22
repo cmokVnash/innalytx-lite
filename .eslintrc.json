@@ -1,42 +1,39 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:import/recommended",
-        "prettier"
-    ],
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "requireConfigFile": false,
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "babelOptions": {
-            "presets": ["@babel/preset-react"]
-        }
-    },
-    "plugins": ["prettier"],
-    "rules": {
-        "no-unused-vars": "off",
-        "no-const-assign": "warn",
-        "no-use-before-define": [
-            "error",
-            { "functions": false, "classes": false }
-        ],
-        "react/prop-types": 0
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "paths": ["src"]
-            }
-        }
+    "requireConfigFile": false,
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
     }
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "no-unused-vars": "off",
+    "no-const-assign": "warn",
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "react/prop-types": 0,
+    "object-curly-newline": ["warning", { "minProperties": 4 }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
 }

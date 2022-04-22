@@ -1,11 +1,11 @@
-import React from 'react'
-import { Layout } from 'antd'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { Layout, Input } from 'antd'
+
 import { Link, Route, Routes } from 'react-router-dom'
 import { orderItems } from '../../components/Data/OrderData'
 import './OrderDetails.css'
 import OrderItems from '../../components/OrderDetails/OrderItems'
-import { Input } from 'antd'
+
 import { CloseOutlined, LeftCircleOutlined } from '@ant-design/icons'
 import SignupForm from '../Homepage/SignupForm'
 import PaymentForm from './PaymentForm'
