@@ -37,6 +37,10 @@ export const dashboardRoutes = [
     path: privateRoute.confirmOrder,
     component: lazy(() => import('../../pages/Order/OrderDetails')),
   },
+  {
+    path: privateRoute.sales,
+    component: lazy(() => import('../../pages/Sales/Sales')),
+  },
 
   // {
   //     path: privateRoute.products,

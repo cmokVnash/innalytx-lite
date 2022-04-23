@@ -168,7 +168,7 @@ const Order = () => {
                             onClick={() => {
                               addItemToCart({
                                 id: item.id,
-                                price: item.size[currentSizeIndex]?.price,
+                                unitPrice: item.size[currentSizeIndex]?.price,
                                 size: item.size[currentSizeIndex].size,
                                 name: item.name,
                               })

@@ -3,14 +3,18 @@ import { CloseOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons'
 import { OrderCard, OrderDetails, OrderImg } from '../OrderStyle'
 import { Button } from 'antd'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../../../store/slice/orderSlice'
+import { addToCart, deductFromCart } from '../../../store/slice/orderSlice'
 
 const OrderCardItem = ({ item }) => {
   console.log(item)
   const { name, size, price, id, count } = item
   const dispatch = useDispatch()
   const addItemToCart = (item) => {
+    console.log('item', item)
     dispatch(addToCart(item))
+  }
+  const deductItemToCart = (item) => {
+    dispatch(deductFromCart(item))
   }
   return (
     <OrderCard>
@@ -31,7 +35,10 @@ const OrderCardItem = ({ item }) => {
               icon={<PlusOutlined />}
               onClick={() => addItemToCart(item)}
             />
-            <Button icon={<MinusOutlined />} />
+            <Button
+              icon={<MinusOutlined />}
+              onClick={() => deductItemToCart(item)}
+            />
           </div>
         </div>
       </OrderDetails>

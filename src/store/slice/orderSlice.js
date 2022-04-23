@@ -5,7 +5,7 @@ import http from '../../https'
 import toast from 'react-hot-toast'
 const initialState = {
   loading: false,
-  orders: null,
+  orders: [],
   cart: {
     cartItems: [],
     totalPrice: 0,
@@ -51,25 +51,54 @@ const OrderSlice = createSlice({
           return {
             ...it,
             count: it.count + 1,
-            price: Number(payload.price) + Number(it.price),
+            unitPrice: Number(payload.unitPrice),
+            price: Number(payload.unitPrice) + Number(it.price),
           }
         }
         return { ...it }
       })
       console.log(newCart)
       if (!found) {
-        state.cart.cartItems.push({ ...payload, count: 1 })
-        
+        state.cart.cartItems.push({
+          ...payload,
+          count: 1,
+          price: Number(payload.unitPrice),
+        })
       } else {
         console.log(newCart)
         state.cart.cartItems = newCart
-       
       }
       state.cart.totalPrice =
-      Number(payload.price) + Number(state.cart.totalPrice)
+        Number(payload.unitPrice) + Number(state.cart.totalPrice)
     },
-    removeFromCart(state, { payload }) {},
-    deductFromCart(state, { payload }) {},
+    removeFromCart: (state, { payload }) => {},
+    clearCart: (state) => {
+      state.cart = {
+        cartItems: [],
+        totalPrice: 0,
+      }
+    },
+    deductFromCart(state, { payload }) {
+      let newCart = []
+      state.cart.cartItems.forEach((it) => {
+        console.log('it', it)
+        console.log('payload', payload)
+        if (payload.id === it.id && payload.size === it.size) {
+          if (payload.count > 1) {
+            newCart.push({
+              ...it,
+              count: it.count - 1,
+              price: Number(it.price) - Number(payload.unitPrice),
+            })
+          }
+          state.cart.totalPrice =
+            Number(state.cart.totalPrice) - Number(payload.unitPrice)
+        } else {
+          newCart.push(it)
+        }
+      })
+      state.cart.cartItems = newCart
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getOrders.fulfilled, (state, action) => {
@@ -97,5 +126,5 @@ const OrderSlice = createSlice({
   },
 })
 
-export const { addToCart } = OrderSlice.actions
+export const { addToCart, deductFromCart, clearCart } = OrderSlice.actions
 export default OrderSlice
