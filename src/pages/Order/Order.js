@@ -146,7 +146,7 @@ const Order = () => {
                     <Col span={8} key={index}>
                       <Card
                         style={{
-                          width: 200,
+                          width: 250,
 
                           boxShadow: ' rgba(0, 0, 0, 0.35) 0px 1px 3px',
                           backgroundColor: '#edf2fb',
@@ -207,9 +207,8 @@ const Order = () => {
                   ))}
                 </Row>
               </ProductContainer>
-
-              <ItemSelectionContainer />
             </OrderContainer>
+            <ItemSelectionContainer />
           </Content>
         </Layout>
       </Layout>

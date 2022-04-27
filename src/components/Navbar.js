@@ -10,9 +10,8 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const isLoggedIn = useSelector((state) => state.Auth.token)
   return (
-    <div className="container-fluid">
+    <div style={{ position: 'sticky', top: '0' }}>
       <nav>
-        <div className="logo"></div>
         <input type="checkbox" id="click" />
         <label htmlFor="click" className="menu-btn">
           <i>

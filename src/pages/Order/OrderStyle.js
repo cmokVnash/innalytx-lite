@@ -11,6 +11,7 @@ const CartContainer = styled.div`
   padding: 0.5rem 1.5rem;
   z-index: 3;
   border-left: 1px solid #b1a7a6;
+  margin-top: 70px;
 `
 
 const CartHeading = styled.div`
@@ -37,7 +38,7 @@ const OrderCard = styled.div`
 `
 
 const OrderWrapper = styled.div`
-  height: 300px;
+  height: 250px;
   width: 100%;
   overflow-y: scroll;
   margin: 20px 0;
@@ -55,12 +56,23 @@ const OrderWrapper = styled.div`
 `
 
 const ProductContainer = styled.div`
-  width: 74%;
-  height: 100vh;
+  width: 70%;
+  height: 80vh;
   align-items: center;
   overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 20px 0 20px 0px;
+  scroll-behavior: smooth;
   &::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: lightGray;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 20px;
   }
 `
 
@@ -197,8 +209,8 @@ const PaymentWrapper = styled.div`
   background: #fff;
   border-radius: 5px;
   position: relative;
-  top: 25%;
-  left: 23%;
+  top: 18%;
+  left: 15%;
 `
 
 const OrderCart = styled.div`
@@ -211,6 +223,7 @@ const OrderCart = styled.div`
   padding: 0.5rem 1.5rem;
   z-index: 3;
   border-left: 1px solid #b1a7a6;
+  margin-top: 70px;
 `
 const { Group, Button } = Radio
 
